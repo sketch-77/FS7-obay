@@ -3,11 +3,11 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import "./App.css";
 import { Provider } from "react-redux";
-import Store from "./Store.js";
+import store from "./Store.js";
 
 function App() {
   return (
-    <Provider Store={Store}>
+    <Provider store={store}>
       <div className="App">
         <Navbar />
         <Home />
