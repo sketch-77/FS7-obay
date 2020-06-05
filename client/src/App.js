@@ -22,7 +22,7 @@ class App extends Component {
             <div className="auth-wrapper">
               <div className="auth-inner">
                 <Switch>
-                  {/* <Route exact path="/"><Login/></Route>  */}
+                  <Route exact path="/"><Login/></Route> 
                   <Route path="/login" component={Login} />
                   <Route path="/products" component={Login} />
                   {/* <Route path="/sign-up"><SignUp/></Route> */}
