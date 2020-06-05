@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Route , withRouter} from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
 import axios from "axios";
 
 
@@ -13,6 +12,10 @@ const handleInputChange = (e) => {
       [name]: value,
     });
   };
+
+  // const handleProductClick = () => {
+  //   console.log("lala")
+  // }
 
   const openUserProfile = () => {
     axios("/users/profile", {
