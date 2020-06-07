@@ -61,6 +61,12 @@ if (email && password) {
 }
 });
 
+// protected route
+router.get('/protected', passport.authenticate('jwt', { session: false }), function(req, res) {
+    res.json({ msg: 'Congrats! You are seeing this because you are authorized'});
+});
+
+
 
 
 const getAllUsers = (req, res) => {
