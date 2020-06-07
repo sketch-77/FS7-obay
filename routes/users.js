@@ -18,9 +18,9 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = "wowwow";
 
 // lets create our strategy for web token
-let strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
+let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     console.log("payload received", jwt_payload);
-    let user = getUser({ id: jwt_payload.id });
+    let user = getUser({id: jwt_payload.id});
     if (user) {
         next(null, user);
     } else {
@@ -40,33 +40,33 @@ const getUser = async obj => {
 };
 
 // login route
-router.post(`/login`, async function(req, res, next) {
+router.post(`/login`, async function (req, res, next) {
     console.log(req.body)
-const { email, password } = req.body;
-if (email && password) {
-    // we get the user with the email and save the resolved promise returned
-    let user = await getUser({ email });
-    if (!user) {
-        res.status(401).json({ msg: "No such user found", user });
+    const {email, password} = req.body;
+    if (email && password) {
+        // we get the user with the email and save the resolved promise returned
+        let user = await getUser({email});
+        console.log(user)
+
+        if (!user) {
+            res.status(401).json({msg: "No such user found", user});
+        }
+        if (user.password === password) {
+            // from now on we’ll identify the user by the id and the id is
+            // the only personalized value that goes into our token
+            let payload = {id: user.id};
+            let token = jwt.sign(payload, jwtOptions.secretOrKey);
+            res.json({msg: "ok", token: token});
+        } else {
+            res.status(401).json({msg: "Password is incorrect"});
+        }
     }
-    if (user.password === password) {
-        // from now on we’ll identify the user by the id and the id is
-        // the only personalized value that goes into our token
-        let payload = { id: user.id };
-        let token = jwt.sign(payload, jwtOptions.secretOrKey);
-        res.json({ msg: "ok", token: token });
-    } else {
-        res.status(401).json({ msg: "Password is incorrect" });
-    }
-}
 });
 
 // protected route
-router.get('/protected', passport.authenticate('jwt', { session: false }), function(req, res) {
-    res.json({ msg: 'Congrats! You are seeing this because you are authorized'});
+router.get('/protected', passport.authenticate('jwt', {session: false}), function (req, res) {
+    res.json({msg: 'Congrats! You are seeing this because you are authorized'});
 });
-
-
 
 
 const getAllUsers = (req, res) => {
@@ -86,9 +86,9 @@ const getAllUsers = (req, res) => {
 router.get("/", getAllUsers);
 
 /* Create  user */
-router.post("/",  (req, res) => {
-    const { email, password, firstName, lastName } = req.body;
-    models.User.create({ email, password, firstName, lastName })
+router.post("/", (req, res) => {
+    const {email, password, firstName, lastName} = req.body;
+    models.User.create({email, password, firstName, lastName})
         .then((user) => res.send(user))
         .catch((err) => res.status(500).send(err));
 });

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./components/NavBar";
+import Protected from "./components/Protected";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -24,7 +25,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/"><Login/></Route> 
                   <Route path="/login" component={Login} />
-                  <Route path="/products" component={Login} />
+                  <Route path="/protected" component={Protected} />
                   {/* <Route path="/sign-up"><SignUp/></Route> */}
                   {/* <Route path="/profile" component={Profile}/> */}
                 </Switch>
