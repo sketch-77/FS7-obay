@@ -6,7 +6,7 @@ var logger = require("morgan");
 var passport   = require('passport')
 var session    = require('express-session')
 var bodyParser = require('body-parser')
-var env = require('dotenv').load();
+// var env = require('dotenv').load();
 
 var homeRouter = require("./routes/home");
 var usersRouter = require("./routes/users");
@@ -25,12 +25,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // For Passport
-
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
-
 app.use(passport.initialize());
-
 app.use(passport.session()); // persistent login sessions
+
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -55,5 +54,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.rend("error");
 });
+
 
 module.exports = app;
