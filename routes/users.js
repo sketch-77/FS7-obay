@@ -10,11 +10,25 @@ router.get("/", function (req, res, next) {
     .catch((err) => res.status(500).send(users));
 });
 
+/* CREATE a new user */
 router.post("/", function (req, res) {
   const { firstname, lastname, email, password } = req.body;
   models.User.create({ firstname, lastname, email, password })
     .then((user) => res.send(user))
     .catch((err) => res.status(500).send(err));
+});
+
+/* Get UserById */
+router.get("/:id", function (req, res, next) {
+  const { id } = req.params;
+
+  models.User.findOne({
+    where: {
+      id,
+    },
+  })
+    .then((user) => res.send(user))
+    .catch((err) => res.status(500).send(user));
 });
 
 // const getOneUser = (req, res) => {
@@ -33,17 +47,5 @@ router.post("/", function (req, res) {
 //     console.log(error);
 //   }
 // };
-
-router.get("/:id", function (req, res, next) {
-  const { id } = req.params;
-
-  models.User.findOne({
-    where: {
-      id,
-    },
-  })
-    .then((user) => res.send(user))
-    .catch((err) => res.status(500).send(user));
-});
 
 module.exports = router;
