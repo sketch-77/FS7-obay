@@ -1,17 +1,18 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var passport   = require('passport')
-var session    = require('express-session')
-var bodyParser = require('body-parser')
-// var env = require('dotenv').load();
+let createError = require("http-errors");
+let express = require("express");
+let path = require("path");
+let cookieParser = require("cookie-parser");
+let logger = require("morgan");
+let passport   = require('passport')
+let session    = require('express-session')
+let bodyParser = require('body-parser')
+// let env = require('dotenv').load();
 
-var homeRouter = require("./routes/home");
-var usersRouter = require("./routes/users");
+let homeRouter = require("./routes/home");
+let usersRouter = require("./routes/users");
+let productsRouter = require("./routes/products");
 
-var app = express();
+let app = express();
 
 
 
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", homeRouter);
 app.use("/users", usersRouter);
+app.use("/products", productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
