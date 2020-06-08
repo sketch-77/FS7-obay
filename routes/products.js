@@ -36,13 +36,17 @@ router.get("/", getAllProducts);
 // });
 
 /* CREATE a new product */
-router.post("/products", function (req, res) {
-    console.log("Iam hereeee", req.body);
+router.post("/", function (req, res) {
+    // console.log("Iam hereeee", req.body);
     const { category, price, description, img, title } = req.body;
     models.Product.create({ firstName, lastName, email, password })
-        .then((product) => res.send(product))
+        .then((product) => {console.log(product)
+                res.send(product)
+            }
+
+        )
         .catch((err) => {
-            console.log(err);
+            console.log("this is error ", err);
             res.status(500).send(err);
         });
 });

@@ -4,5 +4,6 @@ To create a new model named User please run `npx sequelize-cli model:generate --
 This will:
 
 - Create a model file user in models folder;
-- Create a migration file with name like XXXXXXXXXXXXXX-create-Usertdtdt.js in migrations folder.
+- Create a migration file with name like XXXXXXXXXXXXXX-create-User.js in migrations folder.
 If you want to use sequelize-auto-migration you need to install the latest build stable `yarn add github:scimonster/sequelize-auto-migrations#a063aa6535a3f580623581bf866cef2d609531ba`
+if you use buit in migration then you have to run ``
