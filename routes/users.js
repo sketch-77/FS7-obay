@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var models = require("../models/index");
+let express = require("express");
+let router = express.Router();
+let models = require("../models/index");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 
