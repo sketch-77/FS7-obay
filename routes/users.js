@@ -27,7 +27,7 @@ let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
         next(null, false);
     }
 });
-// use the strategy
+// use the strategy for authentification
 passport.use(strategy);
 
 router.use(passport.initialize());
@@ -55,6 +55,7 @@ router.post(`/login`, async function (req, res, next) {
             // from now on we’ll identify the user by the id and the id is
             // the only personalized value that goes into our token
             let payload = {id: user.id};
+            console.log("token ok!");
             let token = jwt.sign(payload, jwtOptions.secretOrKey);
             res.json({msg: "ok", token: token});
         } else {
@@ -63,7 +64,7 @@ router.post(`/login`, async function (req, res, next) {
     }
 });
 
-// protected route
+// Test protected route
 router.get('/protected', passport.authenticate('jwt', {session: false}), function (req, res) {
     res.json({msg: 'Congrats! You are seeing this because you are authorized'});
 });
@@ -73,7 +74,7 @@ const getAllUsers = (req, res) => {
     try {
         models.User.findAll()
             .then((users) => {
-                console.log(users);
+                // console.log(users);
                 res.send(users);
             })
             .catch((error) => res.send(error));
@@ -92,19 +93,5 @@ router.post("/", (req, res) => {
         .then((user) => res.send(user))
         .catch((err) => res.status(500).send(err));
 });
-
-
-// //get user by email/password
-// router.get("/", (req, res, next) => {
-//     console.log("this is req.body from get user by email and password: ", req.body)
-//     const { email, password } = req.body;
-//     models.User.findOne({
-//         where: {
-//             email, password
-//         }
-//     })
-//         .then((user) => res.send(user))
-//         .catch((err) => res.status(500).send(err));
-// })
 
 module.exports = router;

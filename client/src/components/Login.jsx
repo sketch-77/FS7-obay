@@ -23,7 +23,9 @@ class Login extends Component {
 
     openTestPage = () => {
         axios("/users/protected", {
-            headers: {"x-access-token": localStorage.getItem("token")}
+            // headers: {"x-access-token": localStorage.getItem("token")}
+            // TODO check is there is a better way to do it
+            headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
         })
             .then(response => {
                 console.log(response.data)
@@ -43,6 +45,7 @@ class Login extends Component {
             },
         })
             .then(response => {
+                console.log("I AM HERE!")
                 localStorage.setItem("token", response.data.token);
                 this.openTestPage();
                 console.log(response.data)
