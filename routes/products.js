@@ -27,14 +27,6 @@ const getAllProducts = (req, res) => {
 /* GET all products */
 router.get("/", getAllProducts);
 
-// /* Create  product */
-// router.post("/", (req, res) => {
-//     const {email, password, firstName, lastName} = req.body;
-//     models.Product.create({email, password, firstName, lastName})
-//         .then((product) => res.send(product))
-//         .catch((err) => res.status(500).send(err));
-// });
-
 /* CREATE a new product */
 router.post("/", function (req, res) {
     console.log("Iam hereeee", req.body);

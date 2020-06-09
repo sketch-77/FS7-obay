@@ -33,7 +33,6 @@ function App() {
                 <Route path="/products" component={Products} />
                 <Route path="/register" component={Register} />
                 <Route path="/addproduct" component={AddProduct} />
-                <Route path="/addproduct" component={AddProduct} />
               </Switch>
             </div>
           </div>
