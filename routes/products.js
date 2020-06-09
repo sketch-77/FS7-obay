@@ -54,7 +54,7 @@ router.post("/", function (req, res) {
 
 /* Get ProductById */
 router.get("/:id", function (req, res, next) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     models.Product.findOne({
         where: {

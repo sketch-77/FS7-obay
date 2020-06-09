@@ -33,7 +33,7 @@ function App() {
                 <Route path="/products" component={Products} />
                 <Route path="/register" component={Register} />
                 <Route path="/addproduct" component={AddProduct} />
-                <Route path="/profile" component={Profile} />
+                <Route path="/addproduct" component={AddProduct} />
               </Switch>
             </div>
           </div>
