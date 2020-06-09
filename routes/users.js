@@ -18,9 +18,10 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = "wowwow";
 
 // lets create our strategy for web token
-let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+let strategy = new JwtStrategy(jwtOptions, async function (jwt_payload, next) {
+  //add async function
   console.log("payload received", jwt_payload);
-  let user = getUser({ id: jwt_payload.id });
+  let user = await getUser({ id: jwt_payload.id }); //Add await
   if (user) {
     next(null, user);
   } else {
@@ -65,12 +66,26 @@ router.post(`/login`, async function (req, res, next) {
 });
 
 // Test protected route
+// router.get(
+//   "/protected",
+//   passport.authenticate("jwt", { session: false }),
+//   function (req, res) {
+//     res.json({
+//       msg: "Congrats! You are seeing this because you are authorized",
+//     });
+//   }
+// );
+
+// retrieve user by id once it has been authenticated
+// findById
 router.get(
-  "/protected",
+  "/profile",
   passport.authenticate("jwt", { session: false }),
   function (req, res) {
+    // console.log(req.user);
     res.json({
       msg: "Congrats! You are seeing this because you are authorized",
+      user: req.user,
     });
   }
 );
@@ -123,5 +138,19 @@ router.get("/:id", function (req, res, next) {
     .then((user) => res.send(user))
     .catch((err) => res.status(500).send(user));
 });
+
+// fetch user by userId
+const findById = (req, res) => {
+  const id = req.params.userId;
+
+  User.findAll({ where: { id } })
+    .then((user) => {
+      if (!user.length) {
+        return res.json({ msg: "user not found" });
+      }
+      res.json({ user });
+    })
+    .catch((err) => res.status(500).json({ err }));
+};
 
 module.exports = router;

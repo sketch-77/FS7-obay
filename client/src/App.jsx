@@ -12,6 +12,8 @@ import Products from "./components/Products";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
 
+import Profile from "./components/Profile";
+
 function App() {
   return (
     <Provider store={store}>
@@ -28,6 +30,7 @@ function App() {
                 <Route path="/protected" component={Protected} />
                 <Route path="/products" component={Products} />
                 <Route path="/register" component={Register} />
+                <Route path="/profile" component={Profile} />
               </Switch>
             </div>
           </div>
