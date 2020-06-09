@@ -57,7 +57,7 @@ router.post(`/login`, async function (req, res, next) {
       let payload = { id: user.id };
       console.log("token ok!");
       let token = jwt.sign(payload, jwtOptions.secretOrKey);
-      res.json({ msg: "ok", token: token });
+      res.json({ msg: "ok", token: token});
     } else {
       res.status(401).json({ msg: "Password is incorrect" });
     }
