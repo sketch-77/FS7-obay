@@ -31,7 +31,9 @@ function NavBar(props) {
           <Nav.Link as={NavLink} to="/products">
             Products
           </Nav.Link>
-
+          <Nav.Link as={NavLink} to="/profile">
+            Profile
+          </Nav.Link>
           <Nav.Link as={NavLink} to="/products">
             <i class="fas fa-shopping-cart"></i>
             Cart <span>{props.cartProps.cartNumbers}</span>
