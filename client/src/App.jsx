@@ -12,6 +12,7 @@ import Products from "./components/Products";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
 
+import Home from "./components/Home";
 import Profile from "./components/Profile";
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
             <div className="auth-inner">
               <Switch>
                 <Route exact path="/">
-                  <Login />
+                  <Home />
                 </Route>
                 <Route path="/login" component={Login} />
                 <Route path="/protected" component={Protected} />
