@@ -9,6 +9,7 @@ import store from "./Store.js";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/login" component={Login} />
                 <Route path="/protected" component={Protected} />
                 <Route path="/products" component={Products} />
+                <Route path="/Cart" component={Cart} />
                 <Route path="/register" component={Register} />
               </Switch>
             </div>
