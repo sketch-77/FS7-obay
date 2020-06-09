@@ -1,5 +1,8 @@
 import React, { fragment } from "react";
 import { connect } from "react-redux";
+// import { productQuantity } from "..actions/productQuantity";
+import "../Product.css";
+
 import shoes from "../images/shoes.jpg";
 import shirt from "../images/shirt.jpg";
 
@@ -17,30 +20,47 @@ function Cart({ cartProps }) {
     console.log(productsInCart);
   });
 
-  productImages = [shoes, shirt];
+  const productImages = [shoes, shirt];
 
   productsInCart = productsInCart.map((product, index) => {
     return (
-      <fragment>
+      <fragment key={index}>
         <div className="product">
-          {" "}
-          <i className="fas fa-window-close"></i>{" "}
+          <ion-icon name="close-circle-outline"></ion-icon>
           <img src={productImages[index]} />
           <span className="sm-hide"> {product.name}</span>
         </div>
         <div className="price sm-hide">${product.price},00</div>
         <div className="quantity">
-          <i className="fas fa-chevron-up"></i>
+          <ion-icon
+            // onClick={() => productQuantity("decrease")}
+            className="decrease"
+            name="arrow-back-circle-outline"
+          ></ion-icon>
           <span>{product.numbers}</span>
-          <i className="fas fa-chevron-down"></i>
+          <ion-icon
+            // onClick={() => productQuantity("increase")}
+            className="increase"
+            name="arrow-forward-circle-outline"
+          ></ion-icon>
         </div>
         <div className="total">${product.numbers * product.price},00</div>
       </fragment>
     );
   });
   return (
-    <div>
-      <h1>This is the cart Page</h1>
+    <div className="container-products">
+      <div className="product-header">
+        <h5 className="product-title">PRODUCT</h5>
+        <h5 className="price sm-hide">PRICE</h5>
+        <h5 className="quantity">QUANTITY</h5>
+        <h5 className="total">TOTAL</h5>
+      </div>
+      <div className="products">{productsInCart}</div>
+      <div className="cartTotalContainer">
+        <h4 className="cartTotalTitle">Cart Total</h4>
+        <h4 className="cartTotal">{cartProps.cartCost},00</h4>
+      </div>
     </div>
   );
 }
@@ -48,3 +68,5 @@ const mapStateToProps = (state) => ({
   cartProps: state.cartState,
 });
 export default connect(mapStateToProps)(Cart);
+
+//{ productQuantity } rember to add this to export prop
