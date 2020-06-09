@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Products from "./components/Products";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
+import AddProduct from "./components/AddProduct";
 
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -31,7 +32,8 @@ function App() {
                 <Route path="/protected" component={Protected} />
                 <Route path="/products" component={Products} />
                 <Route path="/register" component={Register} />
-                <Route path="/profile" component={Profile} />
+                <Route path="/addproduct" component={AddProduct} />
+                <Route path="/addproduct" component={AddProduct} />
               </Switch>
             </div>
           </div>
