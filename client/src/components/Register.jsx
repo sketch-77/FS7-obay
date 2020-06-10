@@ -58,7 +58,7 @@ class Register extends Component {
   render() {
     // const { firstName, lastName, email, password } = this.state;
     return (
-      <form>
+      <div>
         <h3>Sign Up</h3>
         <div className="form-group">
           <label>First name</label>
@@ -111,7 +111,7 @@ class Register extends Component {
         <p className="forgot-password text-right">
           Already registered? <a href="#">Login</a>
         </p>
-      </form>
+      </div>
     );
   }
 }

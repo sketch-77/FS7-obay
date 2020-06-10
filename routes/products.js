@@ -27,24 +27,21 @@ const getAllProducts = (req, res) => {
 /* GET all products */
 router.get("/", getAllProducts);
 
-// /* Create  product */
-// router.post("/", (req, res) => {
-//     const {email, password, firstName, lastName} = req.body;
-//     models.Product.create({email, password, firstName, lastName})
-//         .then((product) => res.send(product))
-//         .catch((err) => res.status(500).send(err));
-// });
-
 /* CREATE a new product */
-router.post("/products", function (req, res) {
+router.post("/", function (req, res) {
     console.log("Iam hereeee", req.body);
-    const { category, price, description, img, title } = req.body;
-    models.Product.create({ firstName, lastName, email, password })
-        .then((product) => res.send(product))
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send(err);
-        });
+    const {category, price, description, img, title} = req.body;
+    try {
+        models.Product.create({category, price, description, img, title})
+            .then((product) => {
+                    console.log(product)
+                    res.send(product)
+                }
+            )
+    } catch (err) {
+        console.log("this is error ", err);
+        res.status(500).send(err);
+    }
 });
 
 /* Get ProductById */
