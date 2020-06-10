@@ -1,71 +1,74 @@
-import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import React from "react";
+import "../App.css";
 // import Form from "react-bootstrap/Form";
 // import Form from "react-bootstrap/Flexbox";
 // import Card from "react-bootstrap/Card";
 
 // import { connect } from "react-redux";
 // import Login from "./components/Login";
-// import axios from "axios";
+import axios from "axios";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "",
+      // lastName: "",
+      // email: "",
+      // password: "",
+      user: [],
+    };
+  }
 
-class Profile extends Component {
+  async componentDidMount() {
+    fetch("/users/profile")
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        console.log("***THIS IS MY USER ****");
+        this.setState({ user: json.user });
+      })
+      .catch((error) => {});
+  }
+
   render() {
-    return <div>You are now logged in!</div>;
+    // const { firstName, lastName, email, password } = this.state;
+    return (
+      <div>
+        <h3>Welcome back! You logged in as {this.state.user.firstName}</h3>
+
+        <button>Show Listed Products</button>
+      </div>
+    );
   }
 }
 
 export default Profile;
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       //   firstName: "",
-//       //   lastName: "",
-//       //   email: "",
-//       //   password: "",
-//       user: [],
-//     };
-//   }
 
-//   async componentDidMount() {
-//     fetch("/profile")
-//       .then((response) => response.json())
-//       .then((user) => this.setState({ user }));
-//   }
+//   database = [
+//   {
+//     id: 1,
+//     firstName: "test",
+//     lastName: "test",
+//     email: "test3@test.com",
+//   },
+// ];
+// onLogin =()=>{
+//   const formData = new FormData();
 
-//   render() {
-//     // // const { firstName, lastName, email, password } = this.state;
-//     return (
-//       <div>
-//         <div className="container fluid">
-//           <h3>Profile</h3>
-//           {this.state.user.id}
+//   formData.append(
+//     "userId",
+//     this.state.profile,
+//     this.state.profile.users
+//   );
 
-{
-  /* <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>Cras justo odio</ListGroupItem>
-              <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-              <ListGroupItem>Vestibulum at eros</ListGroupItem>
-            </ListGroup>
-            <Card.Body>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
-          </Card> */
-}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default withRouter(Profile);
-// export default connect(null, Login)(Profile);
+//   axios
+//   .get("/profile", formData, {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//     },
+//   })
+//   .then((res) =< console.log(res));
+// };

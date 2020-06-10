@@ -22,14 +22,14 @@ class Login extends Component {
   };
 
   openTestPage = () => {
-    axios("/users/protected", {
+    axios("/users/profile", {
       // headers: {"x-access-token": localStorage.getItem("token")}
       // TODO check is there is a better way to do it
       headers: { Authorization: "Bearer " + localStorage.getItem("token") },
     })
       .then((response) => {
         console.log(response.data);
-        this.props.history.push("/protected");
+        this.props.history.push("/profile");
       })
       .catch((error) => {
         console.log("This is the error ********* ", error);
