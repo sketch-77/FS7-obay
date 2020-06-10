@@ -23,21 +23,18 @@ function App() {
       <Router>
         <div className="App">
           <NavBar></NavBar>
-          <div className="auth-wrapper">
-            <div className="auth-inner">
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/login" component={Login} />
-                <Route path="/protected" component={Protected} />
-                <Route path="/products" component={Products} />
-                <Route path="/Cart" component={Cart} />
-                <Route path="/register" component={Register} />
-                <Route path="/addproduct" component={AddProduct} />
-              </Switch>
-            </div>
-          </div>
+
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/login" component={Login} />
+            <Route path="/protected" component={Protected} />
+            <Route path="/products" component={Products} />
+            <Route path="/Cart" component={Cart} />
+            <Route path="/register" component={Register} />
+            <Route path="/addproduct" component={AddProduct} />
+          </Switch>
         </div>
       </Router>
     </Provider>
