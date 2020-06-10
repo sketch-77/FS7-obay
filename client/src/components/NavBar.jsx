@@ -34,21 +34,22 @@ function NavBar(props) {
           <Nav.Link as={NavLink} to="/addproduct">
             Add Products
           </Nav.Link>
+
           <Nav.Link as={NavLink} to="/profile">
             Profile
           </Nav.Link>
-
+          
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-success">Search products</Button>
         </Form>
-      <Nav>
-        <Nav.Link as={NavLink} to="/products">
-          <i className="fas fa-shopping-cart"></i>
-          Cart <span>{props.cartProps.cartNumbers}</span>
-        </Nav.Link>
-      </Nav>
+        
+        <Nav.Link as={NavLink} to="/Cart">
+            <i class="fas fa-shopping-cart"></i>
+            Cart <span>{props.cartProps.cartNumbers}</span>
+          </Nav.Link>
+
       </Navbar.Collapse>
     </Navbar>
   );
