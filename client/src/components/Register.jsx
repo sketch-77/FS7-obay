@@ -23,19 +23,6 @@ class Register extends Component {
     });
   };
 
-  // openTestPage = () => {
-  //     axios("/users/protected", {
-  //         // headers: {"x-access-token": localStorage.getItem("token")}
-  //         // TODO check is there is a better way to do it
-  //         headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
-  //     })
-  //         .then(response => {
-  //             console.log(response.data)
-  //             this.props.history.push('/protected');
-  //         })
-  //         .catch(error => {console.log("This is the error ********* ", error)})
-  // };
-
   handleRegister = () => {
     const { firstName, lastName, email, password } = this.state;
     axios("/users/register", {
