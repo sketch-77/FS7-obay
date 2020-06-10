@@ -5,7 +5,7 @@ import shirt from "./images/shirt.jpg";
 import { connect } from "react-redux";
 import { addToCart } from "./actions/addAction";
 
-const Home = (props) => {
+const Products = (props) => {
   //   const [cartNumbers, setCartNumbers] = useState(0);
 
   //   const addToCart = () => {
@@ -49,4 +49,4 @@ const Home = (props) => {
   );
 };
 
-export default connect(null, { addToCart })(Home);
+export default connect(null, { addToCart })(Products);

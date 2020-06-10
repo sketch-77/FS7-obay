@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import Home from "./Home";
+import Products from "./Products";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./Store.js";
@@ -10,7 +10,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Navbar />
-        <Home />
+        <Products />
       </div>
     </Provider>
   );
