@@ -3,19 +3,25 @@ let express = require("express");
 let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
-let passport   = require('passport')
-let session    = require('express-session')
-let bodyParser = require('body-parser')
+let passport = require("passport");
+let session = require("express-session");
+let bodyParser = require("body-parser");
 // let env = require('dotenv').load();
 
 let homeRouter = require("./routes/home");
 let usersRouter = require("./routes/users");
 let productsRouter = require("./routes/products");
+var fileUpload = require("express-fileupload");
 
 let app = express();
 
-
-
+//need to use fileUpload
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "./tmp/",
+  })
+);
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -26,10 +32,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // For Passport
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -56,6 +63,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.send("error");
 });
-
 
 module.exports = app;

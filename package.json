@@ -15,10 +15,12 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "express-fileupload": "^1.1.7-alpha.3",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
+    "mime-types": "^2.1.27",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
@@ -27,7 +29,8 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^5.21.11",
-    "sequelize-auto-migrations": "github:scimonster/sequelize-auto-migrations#a063aa6535a3f580623581bf866cef2d609531ba"
+    "sequelize-auto-migrations": "github:scimonster/sequelize-auto-migrations#a063aa6535a3f580623581bf866cef2d609531ba",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "sequelize-cli": "^5.5.1"

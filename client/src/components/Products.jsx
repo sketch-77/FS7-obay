@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../App.css";
-import shoes from "../images/shoes.jpg";
-import shirt from "../images/shirt.jpg";
 // import { connect } from "react-redux";
 // import { addToCart } from "../actions/addAction";
 
@@ -16,19 +14,19 @@ const database = [
     id: 1,
     name: "Shoes",
     price: "50",
-    image: shoes,
+    img: "a0953018-ca0e-4bb4-a1cf-87099a2399c4.png",
   },
   {
     id: 2,
     name: "Shirt",
     price: "10",
-    image: shirt,
+    img: "a0953018-ca0e-4bb4-a1cf-87099a2399c4.png",
   },
   {
     id: 3,
     name: "Pants",
     price: "60",
-    image: shirt,
+    img: "a0953018-ca0e-4bb4-a1cf-87099a2399c4.png",
   },
 ];
 

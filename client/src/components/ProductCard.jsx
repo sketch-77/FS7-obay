@@ -5,7 +5,11 @@ import { addToCart } from "../actions/addAction";
 const ProductCard = ({ product, addToCart }) => {
   return (
     <div className="image">
-      <img src={product.image} alt={product.name} className="img-fluid" />
+      <img
+        src={`/img/${product.img}`}
+        alt={product.name}
+        className="img-fluid"
+      />
       <h3>{product.name}</h3>
       <h3>{product.price}</h3>
       <a
