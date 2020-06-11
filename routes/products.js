@@ -79,4 +79,7 @@ router.get("/:id", function (req, res, next) {
     .catch((err) => res.status(500).send(product));
 });
 
+// You can test your API in http://localhost:5000/product/images
+// router.get("/product/images/filename")
+
 module.exports = router;
