@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+
+// const apiRoot = "/products";
 import { addToCart } from "../actions/addAction";
 
 const ProductCard = ({ product, addToCart }) => {
@@ -10,10 +12,14 @@ const ProductCard = ({ product, addToCart }) => {
         alt={product.name}
         className="img-fluid"
       />
-      <h3>{product.name}</h3>
+      <h3>{product.title}</h3>
+      <h3>{product.description}</h3>
       <h3>{product.price}</h3>
+      <h3>{product.category}</h3>
+
       <a
-        onClick={() => addToCart("shoes")}
+        // can I say addto cart{product.title}
+        onClick={() => addToCart("product")}
         className="addToCart cart1"
         href="#"
       >
