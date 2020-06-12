@@ -8,38 +8,22 @@ import {
 const initialState = {
   cartNumbers: 0,
   cartCost: 0,
-  products: {
-    shoes: {
-      name: "shoes",
-      price: 50.0,
-      numbers: 0,
-      inCart: false,
-    },
-    shirt: {
-      name: "shirt",
-      price: 10,
-      numbers: 0,
-      inCart: false,
-    },
-  },
+  products: [],
 };
 
 export default (state = initialState, action) => {
   let productSelected = "";
   switch (action.type) {
     case ADD_PRODUCT_CART:
-      productSelected = { ...state.products[action.payLoad] };
-      productSelected.numbers += 1;
-      productSelected.inCart = true;
-      console.log(productSelected);
+      // productSelected = { ...state.products[action.payLoad] };
+      // productSelected.numbers += 1;
+      // productSelected.inCart = true;
+      // console.log(productSelected);
       return {
         ...state,
-        cartNumbers: state.cartNumbers + 1,
-        cartCost: state.cartCost + state.products[action.payLoad].price,
-        products: {
-          ...state.products,
-          [action.payLoad]: productSelected,
-        },
+        // cartNumbers: state.cartNumbers + 1,
+        // cartCost: state.cartCost + state.products[action.payLoad].price,
+        products: [...state.products, action.payLoad],
       };
     case GET_NUMBERS_CART:
       return {

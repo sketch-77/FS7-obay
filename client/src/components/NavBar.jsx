@@ -46,7 +46,7 @@ function NavBar(props) {
 
         <Nav.Link as={NavLink} to="/Cart">
           <i class="fas fa-shopping-cart"></i>
-          Cart <span>{props.cartProps.cartNumbers}</span>
+          Cart <span>{props.cartProps.products.length}</span>
         </Nav.Link>
       </Navbar.Collapse>
     </Navbar>

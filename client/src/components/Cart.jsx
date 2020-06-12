@@ -9,16 +9,16 @@ import shirt from "../images/shirt.jpg";
 function Cart({ cartProps }) {
   console.log(cartProps);
 
-  let productsInCart = [];
+  let productsInCart = cartProps.products;
 
   //looping throught the keys to loop through objects inside
-  Object.keys(cartProps.products).forEach(function (item) {
-    console.log(item);
-    if (cartProps.products[item].inCart) {
-      productsInCart.push(cartProps.products[item]);
-    }
-    console.log(productsInCart);
-  });
+  // Object.keys(cartProps.products).forEach(function (item) {
+  //   console.log(item);
+  //   if (cartProps.products[item].inCart) {
+  //     productsInCart.push(cartProps.products[item]);
+  //   }
+  //   console.log(productsInCart);
+  // });
 
   const productImages = [shoes, shirt];
 
@@ -27,7 +27,7 @@ function Cart({ cartProps }) {
       <fragment key={index}>
         <div className="product">
           <ion-icon name="close-circle-outline"></ion-icon>
-          <img src={productImages[index]} />
+          <img src={`/img/${product.img}`} />
           <span className="sm-hide"> {product.name}</span>
         </div>
         <div className="price sm-hide">${product.price},00</div>

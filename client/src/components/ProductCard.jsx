@@ -19,7 +19,7 @@ const ProductCard = ({ product, addToCart }) => {
 
       <a
         // can I say addto cart{product.title}
-        onClick={() => addToCart("product")}
+        onClick={() => addToCart(product)}
         className="addToCart cart1"
         href="#"
       >
