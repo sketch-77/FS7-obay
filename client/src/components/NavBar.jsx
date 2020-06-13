@@ -14,7 +14,7 @@ function NavBar(props) {
   }, []);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="sm">
       <Navbar.Brand href="#home">oBay</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -45,7 +45,7 @@ function NavBar(props) {
         </Form>
 
         <Nav.Link as={NavLink} to="/Cart">
-          <i class="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart"></i>
           Cart <span>{props.cartProps.products.length}</span>
         </Nav.Link>
       </Navbar.Collapse>
