@@ -65,16 +65,7 @@ router.post(`/login`, async function (req, res, next) {
     }
 });
 
-// Test protected route
-router.get(
-    '/protected',
-    passport.authenticate('jwt', {session: false}),
-    (req, res) => {
-        res.json({msg: 'Congrats! You are seeing this because you are authorized'});
-    });
-
-
-// Test protected route
+// Get profile rote
 router.get(
     '/profile',
     passport.authenticate('jwt', {session: false}),
@@ -85,31 +76,10 @@ router.get(
         });
     });
 
-
-// retrieve user once it has been authenticated
-// router.get(
-//     "/profile",
-//     passport.authenticate("jwt", {session: true}),
-//     (req, res) => {
-//         // console.log(req.user);
-//         try {
-//             console.log(req)
-//             res.json({
-//                 msg: "Congrats! You are seeing this because you are authorized",
-//                 user: req.user,
-//             });
-//         } catch (error) {
-//             console.log(error)
-//             res.send(error)
-//         }
-//     }
-// );
-
 const getAllUsers = (req, res) => {
     try {
         models.User.findAll()
             .then((users) => {
-                // console.log(users);
                 res.send(users);
             })
             .catch((error) => res.send(error));
@@ -120,14 +90,6 @@ const getAllUsers = (req, res) => {
 
 /* GET all users */
 router.get("/", getAllUsers);
-
-// /* Create  user */
-// router.post("/", (req, res) => {
-//     const {email, password, firstName, lastName} = req.body;
-//     models.User.create({email, password, firstName, lastName})
-//         .then((user) => res.send(user))
-//         .catch((err) => res.status(500).send(err));
-// });
 
 /* CREATE a new user */
 router.post("/register", function (req, res) {

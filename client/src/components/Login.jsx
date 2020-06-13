@@ -36,23 +36,6 @@ class Login extends Component {
             })
     };
 
-
-    openTestPage = () => {
-        axios("/users/protected", {
-            // headers: {"x-access-token": localStorage.getItem("token")}
-            // TODO check is there is a better way to do it
-            headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
-        })
-            .then(response => {
-                console.log(response.data)
-                this.props.history.push('/protected');
-            })
-            .catch(error => {
-                console.log("This is the error ********* ", error)
-            })
-    };
-
-
     handleLogin = () => {
         const {email, password} = this.state;
         try {
@@ -67,7 +50,6 @@ class Login extends Component {
                     localStorage.setItem("token", response.data.token);
 
                     this.openUserProfile();
-                    // console.log("THIS IS MY RESPONSE!******* ", response.data);
                 })
         } catch (error) {
             console.log(error);

@@ -1,13 +1,6 @@
 import React from "react";
 import "../App.css";
 import Form from "react-bootstrap/Form";
-// import Form from "react-bootstrap/Flexbox";
-// import Card from "react-bootstrap/Card";
-
-// import { connect } from "react-redux";
-// import Login from "./components/Login";
-import axios from "axios";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -27,17 +20,6 @@ class Profile extends React.Component {
         return JSON.parse(localStorage.getItem('user'));
         ;
     }
-
-    // async componentDidMount() {
-    //   fetch("/users/profile")
-    //     .then((res) => res.json())
-    //     .then((json) => {
-    //       console.log(json);
-    //       console.log("***THIS IS MY USER ****");
-    //       this.setState({ user: json.user });
-    //     })
-    //     .catch((error) => {});
-    // }
 
     render() {
         const { firstName, lastName, email, password } = this.state.user;
