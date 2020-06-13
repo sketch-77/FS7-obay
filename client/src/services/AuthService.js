@@ -8,5 +8,6 @@ class AuthService {
     return JSON.parse(localStorage.getItem('user'));;
   }
 }
+//this doeesn't work
 
 export default new AuthService();
