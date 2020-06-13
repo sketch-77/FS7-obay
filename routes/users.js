@@ -96,7 +96,13 @@ router.post("/register", function (req, res) {
     console.log("Iam hereeee", req.body);
     const {firstName, lastName, email, password} = req.body;
     models.User.create({firstName, lastName, email, password})
-        .then((user) => res.send(user))
+        .then((user) => {
+            let payload = {id: user.id};
+            console.log("user created");
+            let token = jwt.sign(payload, jwtOptions.secretOrKey);
+            res.json({msg: "ok", token: token});
+            }
+        )
         .catch((err) => {
             console.log(err);
             res.status(500).send(err);

@@ -15,6 +15,21 @@ class Register extends Component {
     };
   }
 
+  openUserProfile = () => {
+    axios("/users/profile", {
+      // TODO check is there is a better way to do it
+      headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
+    })
+        .then(response => {
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          this.props.history.push('/profile');
+          // window.location.reload();
+        })
+        .catch(error => {
+          console.log("This is the error ********* ", error)
+        })
+  };
+
   handleInputChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -35,7 +50,9 @@ class Register extends Component {
       },
     })
       .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         console.log(response.data);
+        this.openUserProfile();
       })
       .catch((error) => {
         console.log(error);

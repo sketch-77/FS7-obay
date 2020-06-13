@@ -48,7 +48,6 @@ class Login extends Component {
             })
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
-
                     this.openUserProfile();
                 })
         } catch (error) {
