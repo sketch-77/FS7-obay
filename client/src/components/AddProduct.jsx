@@ -79,7 +79,7 @@ class AddProduct extends Component {
     const { title, description, img, price, category } = this.state;
     return (
       <div className="container">
-        <div class="card card-body">
+        <div className="card card-body">
           <h2>Add product</h2>
           <hr />
           <Form.Group controlId="formBasicTitle">
