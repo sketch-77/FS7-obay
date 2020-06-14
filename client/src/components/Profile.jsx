@@ -3,6 +3,8 @@ import "../App.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import AuthService from "../services/AuthService"
+
 
 class Profile extends React.Component {
     constructor(props) {
@@ -12,20 +14,20 @@ class Profile extends React.Component {
             lastName: "",
             email: "",
             password: "********",
-            user: this.getCurrentUser(),
+            currentUser: AuthService.getCurrentUser(),
         };
     }
 
-    getCurrentUser() {
-        return JSON.parse(localStorage.getItem('user'));
-        ;
-    }
+    // getCurrentUser() {
+    //     return JSON.parse(localStorage.getItem('user'));
+    // }
 
     render() {
-        const { firstName, lastName, email, password } = this.state.user;
+        const { currentUser } = this.state;
+        const { firstName, lastName, email, password } = this.state.currentUser;
         return (
             <div>
-                <h1 style={{color: "white", "text-align": "center"}}>Welcome back! You logged in as {firstName}</h1>
+                <h1 style={{color: "white", textAlign: "center"}}>Welcome back! You logged in as {firstName}</h1>
                 <hr/>
                 <div className="auth-wrapper">
                     <div className="auth-inner">
