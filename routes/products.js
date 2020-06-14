@@ -78,6 +78,19 @@ router.get("/:id", function (req, res, next) {
     .then((product) => res.send(product))
     .catch((err) => res.status(500).send(product));
 });
+// router.delete("/:id", (req, res) => {
+//   console.log(req.params);
+//   let { id } = req.params;
+//   try {
+//     models.product
+//       .destroy({
+//         where: { id },
+//       })
+//       .then(getAllProducts(req, res));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // You can test your API in http://localhost:5000/product/images
 // router.get("/product/images/filename")
