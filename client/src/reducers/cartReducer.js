@@ -8,21 +8,22 @@ import {
 const initialState = {
   cartNumbers: 0,
   cartCost: 0,
+  numbers: 0,
   products: [],
 };
 
 export default (state = initialState, action) => {
-  let productSelected = "";
+  let productSelected = [action.payLoad];
   switch (action.type) {
     case ADD_PRODUCT_CART:
-      // productSelected = { ...state.products[action.payLoad] };
-      // productSelected.numbers += 1;
+      productSelected = { ...state.products[action.payLoad] };
+      productSelected.numbers += 1;
       // productSelected.inCart = true;
       // console.log(productSelected);
       return {
         ...state,
-        // cartNumbers: state.cartNumbers + 1,
-        // cartCost: state.cartCost + state.products[action.payLoad].price,
+        cartNumbers: [state.cartNumbers + 1],
+        // cartCost: [state.cartCost + state.products.price[action.payLoad]],
         products: [...state.products, action.payLoad],
       };
     case GET_NUMBERS_CART:
@@ -31,15 +32,15 @@ export default (state = initialState, action) => {
       };
     // case INCREASE_QUANTITY:
     //   // state.products['shoes']
-    //   productSelected = { ...state.products[action.payLoad] };
+    //   productSelected = [ ...state.products[action.payLoad] ];
     //   productSelected += 1;
     //   return {
     //     ...state,
     //     cartCost: state.cartCost + state.products[action.payLoad].price,
-    //     products: {
+    //     products: [
     //       ...state.products,
     //       [action.payLoad]: productSelected,
-    //     },
+    //     ]
     //   };
     // case DECREASE_QUANTITY:
     //   productSelected = { ...state.products[action.payLoad] };

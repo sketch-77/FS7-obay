@@ -9,27 +9,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-// const database = [
-//   {
-//     id: 1,
-//     name: "Shoes",
-//     price: "50",
-//     img: "a0953018-ca0e-4bb4-a1cf-87099a2399c4.png",
-//   },
-//   {
-//     id: 2,
-//     name: "Shirt",
-//     price: "10",
-//     img: "a0953018-ca0e-4bb4-a1cf-87099a2399c4.png",
-//   },
-//   {
-//     id: 3,
-//     name: "Pants",
-//     price: "60",
-//     img: "a0953018-ca0e-4bb4-a1cf-87099a2399c4.png",
-//   },
-// ];
-
 const Products = (props) => {
   const [products, setProducts] = useState([]);
   let getProducts = () => {
@@ -47,15 +26,13 @@ const Products = (props) => {
     getProducts();
   }, []);
   return (
-    <Container>
-      <Row>
-        {products.map((product) => (
-          <Col key={product.id}>
-            <ProductCard product={product} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <Row>
+      {products.map((product) => (
+        <Row key={product.id}>
+          <ProductCard product={product} />
+        </Row>
+      ))}
+    </Row>
   );
 };
 

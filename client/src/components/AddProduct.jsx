@@ -79,56 +79,62 @@ class AddProduct extends Component {
     const { title, description, img, price, category } = this.state;
     return (
       <div className="container">
-        <h2>Add product</h2>
-        <hr />
-        <Form.Group controlId="formBasicTitle">
-          <Form.Label>Product title</Form.Label>
-          <Form.Control
-            name="title"
-            type="title"
-            placeholder="Enter product title"
-            onChange={this.handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicDescription">
-          <Form.Label>Product description</Form.Label>
-          <Form.Control
-            name="description"
-            type="description"
-            placeholder="Product description"
-            onChange={this.handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicImg">
-          <Form.Label>Images</Form.Label>
-          <Form.Control
-            name="img"
-            type="file"
-            placeholder="Product images"
-            onChange={this.onFileChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicPrice">
-          <Form.Label>Price</Form.Label>
-          <Form.Control
-            name="price"
-            type="text"
-            placeholder="Product price"
-            onChange={this.handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicCategory">
-          <Form.Label>Category</Form.Label>
-          <Form.Control
-            name="category"
-            type="category"
-            placeholder="Product category"
-            onChange={this.handleInputChange}
-          />
-        </Form.Group>
-        <Button variant="primary" type="button" onClick={this.handleAddProduct}>
-          Add product
-        </Button>
+        <div class="card card-body">
+          <h2>Add product</h2>
+          <hr />
+          <Form.Group controlId="formBasicTitle">
+            <Form.Label>Product title</Form.Label>
+            <Form.Control
+              name="title"
+              type="title"
+              placeholder="Enter product title"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicDescription">
+            <Form.Label>Product description</Form.Label>
+            <Form.Control
+              name="description"
+              type="description"
+              placeholder="Product description"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicImg">
+            <Form.Label>Images</Form.Label>
+            <Form.Control
+              name="img"
+              type="file"
+              placeholder="Product images"
+              onChange={this.onFileChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicPrice">
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              name="price"
+              type="text"
+              placeholder="Product price"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicCategory">
+            <Form.Label>Category</Form.Label>
+            <Form.Control
+              name="category"
+              type="category"
+              placeholder="Product category"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="button"
+            onClick={this.handleAddProduct}
+          >
+            Add product
+          </Button>
+        </div>
       </div>
     );
   }

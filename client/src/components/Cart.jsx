@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 // import { productQuantity } from "..actions/productQuantity";
 import "../Product.css";
 
-import shoes from "../images/shoes.jpg";
-import shirt from "../images/shirt.jpg";
-
 function Cart({ cartProps }) {
   console.log(cartProps);
 
@@ -20,24 +17,22 @@ function Cart({ cartProps }) {
   //   console.log(productsInCart);
   // });
 
-  const productImages = [shoes, shirt];
-
   productsInCart = productsInCart.map((product, index) => {
     return (
       <fragment key={index}>
         <div className="product">
           <ion-icon name="close-circle-outline"></ion-icon>
           <img src={`/img/${product.img}`} />
-          <span className="sm-hide"> {product.name}</span>
+          <span className="sm-hide"> {product.title}</span>
         </div>
-        <div className="price sm-hide">${product.price},00</div>
+        <div className="price sm-hide">${product.price}</div>
         <div className="quantity">
           <ion-icon
             // onClick={() => productQuantity("decrease")}
             className="decrease"
             name="arrow-back-circle-outline"
           ></ion-icon>
-          <span>{product.numbers}</span>
+          {/* <span>{product.numbers}</span> */}
           <ion-icon
             // onClick={() => productQuantity("increase")}
             className="increase"
