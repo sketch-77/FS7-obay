@@ -3,7 +3,6 @@ import { Route, withRouter } from "react-router-dom";
 // import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
 import axios from "axios";
-import AuthService from "../services/AuthService"
 
 class Register extends Component {
   constructor(props) {
@@ -51,7 +50,6 @@ class Register extends Component {
       },
     })
       .then((response) => {
-        AuthService.logout();
         console.log(localStorage.getItem("user"));
         localStorage.setItem("user", JSON.stringify(response.data.user));
         console.log(response.data);

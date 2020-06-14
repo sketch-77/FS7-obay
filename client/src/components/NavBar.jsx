@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { withRouter} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
@@ -7,25 +8,31 @@ import Button from "react-bootstrap/Button";
 import {NavLink} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 import {getNumbers} from "../actions/getAction";
-import AuthService from "../services/AuthService"
+import compose from 'recompose/compose'
+
 
 
 function NavBar(props) {
 
-const [currentUser, setCurrentUser] = useState({});
+const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
 
 
     useEffect(() => {
         getNumbers();
     }, []);
 
-    useEffect(() => {
-        setCurrentUser(AuthService.getCurrentUser());
-        console.log(currentUser)
-    }, []);
 
 
+    const logOut =() =>{
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        //open homepage on logout
+        props.history.push('/');
+    }
 
+    const openLoginPage = () => {
+        // props.history.push('/login');
+    }
 
     return (
         <Navbar bg="light" expand="sm">
@@ -48,13 +55,17 @@ const [currentUser, setCurrentUser] = useState({});
                     <Nav.Link as={NavLink} to="/profile">
                         Profile
                     </Nav.Link>
-
                     {
-                        currentUser ? <Form inline>
-                            <Button variant="outline-success">Logout</Button>
-                        </Form> : <Form inline>
-                            <Button variant="outline-success">Login</Button>
-                        </Form>
+                        currentUser ?
+                            <Form inline>
+                                <Button variant="outline-success" onClick={logOut}>Logout</Button>
+                            </Form>
+                            :
+                            <Nav.Link as={NavLink} to="/login">
+                                <Form inline>
+                                    <Button variant="outline-success">Login</Button>
+                                </Form>
+                            </Nav.Link>
                     }
 
                 </Nav>
@@ -76,4 +87,7 @@ const mapStateToProps = (state) => ({
     cartProps: state.cartState,
 });
 
-export default connect(mapStateToProps, {getNumbers})(NavBar);
+export default compose(
+    withRouter,
+    connect(mapStateToProps, {getNumbers})
+)(NavBar);

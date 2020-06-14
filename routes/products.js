@@ -33,7 +33,7 @@ router.get("/", getAllProducts);
 
 /* CREATE a new product */
 router.post("/", function (req, res) {
-  console.log("Iam hereeee", req.body);
+  console.log("I am hereeee", req.body);
   const { category, price, description, title } = req.body;
   const { img } = req.files;
 

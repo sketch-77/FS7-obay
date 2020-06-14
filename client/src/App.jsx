@@ -16,26 +16,21 @@ import AddProduct from "./components/AddProduct";
 
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import AuthService from "./services/AuthService"
 
 
 function App() {
-    const [currentUser, setCurrentUser] = useState(undefined)
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')))
 
-    useEffect(() => {
-            let user = AuthService.getCurrentUser();
-            if (user.firstName) {
-                setCurrentUser(user);
-                console.log("MY CURRENT USER FROM APP: ", currentUser)
-            }
-        }
-        , [])
+
+    useEffect(()=> {
+        console.log("This is my current user from useEffect", currentUser)
+    }, [])
 
     return (
         <Provider store={store}>
             <Router>
                 <div className="App">
-                    <NavBar></NavBar>
+                    <NavBar currentUser={currentUser}></NavBar>
 
                     <Switch>
                         <Route exact path="/">
@@ -48,6 +43,25 @@ function App() {
                         <Route path="/register" component={Register}/>
                         <Route path="/profile" component={Profile}/>
                         <Route path="/addproduct" component={AddProduct}/>
+
+                        {/*<Route path="/gamecard">*/}
+                        {/*    <GameCard*/}
+                        {/*        className="mx-auto"*/}
+                        {/*        handleNext={this.handleNext}*/}
+                        {/*        handlePrev={this.handlePrev}*/}
+                        {/*        gotoTwitter={this.gotoTwitter}*/}
+                        {/*        handleInput={this.handleInputChange}*/}
+                        {/*        handleSubmitAnswer={this.handleSubmitAnswer}*/}
+                        {/*        handleRatingChange={this.handleRatingChange}*/}
+                        {/*        question={this.state.question}*/}
+                        {/*        rating={this.state.rating}*/}
+                        {/*        q_num={this.state.q_num + 1}*/}
+                        {/*        answer={this.state.answer}*/}
+                        {/*        last_question={this.state.n}*/}
+                        {/*    ></GameCard>*/}
+                        {/*</Route>*/}
+
+
                     </Switch>
                 </div>
             </Router>

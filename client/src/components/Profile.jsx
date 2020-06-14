@@ -3,7 +3,6 @@ import "../App.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import AuthService from "../services/AuthService"
 
 
 class Profile extends React.Component {
@@ -14,16 +13,15 @@ class Profile extends React.Component {
             lastName: "",
             email: "",
             password: "********",
-            currentUser: AuthService.getCurrentUser(),
+            currentUser: JSON.parse(localStorage.getItem('user')),
         };
     }
 
-    // getCurrentUser() {
-    //     return JSON.parse(localStorage.getItem('user'));
-    // }
+componentWillMount() {
+        console.log("**************", JSON.parse(localStorage.getItem('user')))
+}
 
     render() {
-        const { currentUser } = this.state;
         const { firstName, lastName, email, password } = this.state.currentUser;
         return (
             <div>
