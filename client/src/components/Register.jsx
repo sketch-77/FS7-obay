@@ -50,6 +50,7 @@ class Register extends Component {
       },
     })
       .then((response) => {
+        console.log(localStorage.getItem("user"));
         localStorage.setItem("user", JSON.stringify(response.data.user));
         console.log(response.data);
         this.openUserProfile();
