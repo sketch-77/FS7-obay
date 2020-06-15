@@ -1,4 +1,17 @@
 /* styling the cart page */
+.shopping-cart {
+  /* width: 750px;
+  height: 423px;
+  margin: 80px auto; */
+  background: #ffffff;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let’s add some basic style to product name and description.  */
 .container-products {
   max-width: 650px;
   justify-content: space-around;

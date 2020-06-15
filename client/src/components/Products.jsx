@@ -26,7 +26,6 @@ const Products = (props) => {
   }, []);
   return (
     <div>
-      {/* <Filter */}
       <Row>
         {products.map((product) => (
           <Row key={product.id}>
