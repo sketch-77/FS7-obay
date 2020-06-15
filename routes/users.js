@@ -81,7 +81,7 @@ router.post("/register", function (req, res) {
         .then((user) => {
             let payload = {id: user.id};
             console.log("user created");
-            let token = jwt.sign(payload, jwtOptions.secretOrKey);
+            let token = jwt.sign(payload, secretOrKey);
             res.json({msg: "ok", token: token});
             }
         )
