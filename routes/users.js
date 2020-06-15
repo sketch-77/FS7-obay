@@ -7,6 +7,10 @@ const passport = require("passport");
 const strategy = require("../guards/strategy");
 const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn")
 const secretOrKey = "wowwow";
+var fs = require("fs");
+var path = require("path");
+const { v4: uuidv4 } = require("uuid");
+var mime = require("mime-types");
 
 
 // use the strategy for authentification
@@ -80,11 +84,11 @@ router.post("/register", function (req, res) {
     const {firstName, lastName, email, password} = req.body;
     models.User.create({firstName, lastName, email, password})
         .then((user) => {
-            let userData = {firstName: user.firstName, lastName: user.lastName, email: user.email}
-            let payload = {id: user.id};
-            console.log("user created");
-            let token = jwt.sign(payload, secretOrKey);
-            res.json({msg: "ok", token: token, user: userData});
+                let userData = {firstName: user.firstName, lastName: user.lastName, email: user.email}
+                let payload = {id: user.id};
+                console.log("user created");
+                let token = jwt.sign(payload, secretOrKey);
+                res.json({msg: "ok", token: token, user: userData});
             }
         )
         .catch((err) => {
