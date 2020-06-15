@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import AddProduct from "./AddProduct";
 
 
+
 class Profile extends React.Component {
     constructor(props) {
         super(props);
