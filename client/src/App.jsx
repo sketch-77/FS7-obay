@@ -43,25 +43,6 @@ function App() {
                         <Route path="/register" component={Register}/>
                         <Route path="/profile" component={Profile}/>
                         <Route path="/addproduct" component={AddProduct}/>
-
-                        {/*<Route path="/gamecard">*/}
-                        {/*    <GameCard*/}
-                        {/*        className="mx-auto"*/}
-                        {/*        handleNext={this.handleNext}*/}
-                        {/*        handlePrev={this.handlePrev}*/}
-                        {/*        gotoTwitter={this.gotoTwitter}*/}
-                        {/*        handleInput={this.handleInputChange}*/}
-                        {/*        handleSubmitAnswer={this.handleSubmitAnswer}*/}
-                        {/*        handleRatingChange={this.handleRatingChange}*/}
-                        {/*        question={this.state.question}*/}
-                        {/*        rating={this.state.rating}*/}
-                        {/*        q_num={this.state.q_num + 1}*/}
-                        {/*        answer={this.state.answer}*/}
-                        {/*        last_question={this.state.n}*/}
-                        {/*    ></GameCard>*/}
-                        {/*</Route>*/}
-
-
                     </Switch>
                 </div>
             </Router>
