@@ -12,7 +12,6 @@ function Cart({ cartProps }) {
   //   productsInCart = productsInCart.filter((a) => a.index !== product.index);
   //   return { productsInCart };
   // };
-  // productsInCart = productsInCart.map
   return (
     <div className="shopping-cart">
       {" "}
