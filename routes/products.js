@@ -69,45 +69,6 @@ router.get("/", getAllProducts);
 //   });
 // });
 
-
-
-/* CREATE a new product PROTECTED ROUTE */
-router.post("/", userMustBeLoggedIn, function (req, res) {
-  console.log("I am hereeee", req.body);
-  const { category, price, description, title, sellerId } = req.body;
-  const { img } = req.files;
-
-  var extension = mime.extension(img.mimetype);
-  var filename = uuidv4() + "." + extension;
-
-  var tmp_path = img.tempFilePath;
-  var target_path = path.join(__dirname, "../public/img/") + filename;
-
-  fs.rename(tmp_path, target_path, function (err) {
-    if (err) throw err;
-
-    //at this point, filename contains the path of the image
-
-    try {
-      models.Product.create({
-        category,
-        price,
-        description,
-        img: filename,
-        title,
-        sellerId
-      }).then((product) => {
-        console.log(product);
-        res.send(product);
-      });
-    } catch (err) {
-      console.log("this is error ", err);
-      res.status(500).send(err);
-    }
-  });
-});
-
-
 /* Get ProductById */
 router.get("/:id", function (req, res, next) {
   const { id } = req.params;
@@ -120,6 +81,55 @@ router.get("/:id", function (req, res, next) {
     .then((product) => res.send(product))
     .catch((err) => res.status(500).send(product));
 });
+
+// router.get("/:id/products", userMustBeLoggedIn, async function (req, res, next) {
+//   const {id} = req.user.id;
+//
+//   try {
+//     const products = await req.user.getProducts();
+//
+//     res.send(products);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
+
+/* CREATE a new product PROTECTED ROUTE */
+router.post("/", userMustBeLoggedIn, function (req, res) {
+  // console.log("I am hereeee", req.body);
+  const { category, price, description, title } = req.body;
+  const { img } = req.files;
+  console.log("***** MY USER FROM REQ")
+  const {sellerId} = req.user.id;
+  console.log(sellerId)
+
+  var extension = mime.extension(img.mimetype);
+  var filename = uuidv4() + "." + extension;
+
+  var tmp_path = img.tempFilePath;
+  var target_path = path.join(__dirname, "../public/img/") + filename;
+
+  fs.rename(tmp_path, target_path, function (err) {
+    if (err) throw err;
+
+    //at this point, filename contains the path of the image
+    try {
+      req.user.createProduct({
+        category,
+        price,
+        description,
+        img: filename,
+        title,
+        sellerId
+      }).then((product) => {res.send(product);});
+    } catch (err) {
+      console.log("this is error ", err);
+      res.status(500).send(err);
+    }
+  });
+});
+
+
 // router.delete("/:id", (req, res) => {
 //   console.log(req.params);
 //   let { id } = req.params;

@@ -42,7 +42,6 @@ class AddProduct extends Component {
             this.state.selectedFile.name
         );
 
-
         // Request made to the backend api
         // Send formData object
         axios
@@ -56,15 +55,13 @@ class AddProduct extends Component {
 
     handleAddProduct = () => {
 
-        const {title, description, img, price, category, currentUser} = this.state;
-        console.log("this is current user ***** ", currentUser.id)
+        const {title, description, img, price, category} = this.state;
 
         // Create an object of formData
         const formData = new FormData();
 
         // Update the formData object
 
-        // formData.append("sellerId", currentUser.id);
         formData.append("title", title);
         formData.append("description", description);
         formData.append("price", price);
@@ -79,18 +76,18 @@ class AddProduct extends Component {
                 },
             })
             .then((res) => {
-
+console.log("**** FORM DATA FRONTEND *******")
                 console.log(formData)
+console.log("**** Response frontend *******")
                 console.log(res)
             });
-
     };
 
     render() {
         const {title, description, img, price, category} = this.state;
         return (
-            <div className="container">
-                <div className="card card-body">
+            <div className="auth-wrapper">
+                <div className="auth-inner">
                     <h2>Add product</h2>
                     <hr/>
                     <Form.Group controlId="formBasicTitle">

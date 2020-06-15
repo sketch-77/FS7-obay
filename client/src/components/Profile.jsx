@@ -3,6 +3,7 @@ import "../App.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import AddProduct from "./AddProduct";
 
 
 class Profile extends React.Component {
@@ -27,6 +28,7 @@ componentWillMount() {
             <div>
                 <h1 style={{color: "white", textAlign: "center"}}>Welcome back! You logged in as {firstName}</h1>
                 <hr/>
+                <Col>
                 <div className="auth-wrapper">
                     <div className="auth-inner">
                         <Form>
@@ -66,6 +68,10 @@ componentWillMount() {
                         <button>Show Listed Products</button>
                     </div>
                 </div>
+                </Col>
+                <Col>
+                    <AddProduct/>
+                </Col>
             </div>
 
         );

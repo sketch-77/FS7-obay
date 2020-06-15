@@ -24,7 +24,7 @@ const getUser = async (obj) => {
 // lets create our strategy for web token
 let strategy = new JwtStrategy(jwtOptions, async function (jwt_payload, next) {
     //add async function
-    console.log("payload received", jwt_payload);
+    // console.log("payload received", jwt_payload);
     let user = await getUser({id: jwt_payload.id}); //Add await
     if (user) {
         next(null, user);
