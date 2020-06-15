@@ -34,12 +34,13 @@ router.post(`/login`, async function (req, res, next) {
             res.status(401).json({msg: "No such user found", user});
         }
         if (user.password === password) {
+            let userData = {firstName: user.firstName, lastName: user.lastName, email: user.email}
             // from now on we’ll identify the user by the id and the id is
             // the only personalized value that goes into our token
             let payload = {id: user.id};
             console.log("token ok!");
             let token = jwt.sign(payload, secretOrKey);
-            res.json({msg: "ok", token: token});
+            res.json({msg: "ok", token: token, user: userData});
         } else {
             res.status(401).json({msg: "Password is incorrect"});
         }
@@ -54,7 +55,7 @@ router.get(
     (req, res) => {
         res.json({
             msg: 'Congrats! You are seeing this because you are authorized',
-            user: req.user,
+            // user: req.user,
         });
     });
 
@@ -79,10 +80,11 @@ router.post("/register", function (req, res) {
     const {firstName, lastName, email, password} = req.body;
     models.User.create({firstName, lastName, email, password})
         .then((user) => {
+            let userData = {firstName: user.firstName, lastName: user.lastName, email: user.email}
             let payload = {id: user.id};
             console.log("user created");
             let token = jwt.sign(payload, secretOrKey);
-            res.json({msg: "ok", token: token});
+            res.json({msg: "ok", token: token, user: userData});
             }
         )
         .catch((err) => {
