@@ -5,6 +5,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
+import utils from "./utils";
 
 // const apiRoot = "/products";
 import { addToCart } from "../actions/addAction";
@@ -22,7 +23,7 @@ const ProductCard = ({ product, addToCart }) => {
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroupItem>
-            <strong> Price:</strong> ${product.price}
+            <strong> Price:</strong> {utils.formatCurrency(product.price)}
           </ListGroupItem>
           <ListGroupItem>
             <strong>Category:</strong> {product.category}
@@ -35,24 +36,6 @@ const ProductCard = ({ product, addToCart }) => {
         </Button>
       </Card>
     </CardGroup>
-
-    // <div className="image">
-    //   <img
-    //     src={`/img/${product.img}`}
-    //     alt={product.name}
-    //     className="img-fluid"
-    //   />
-    //   <h5>
-    //     <strong>{product.title}</strong>
-    //   </h5>
-    //   <h3 className="card-text">{product.description}</h3>
-    //   <h3>{product.price}</h3>
-    //   <h3>{product.category}</h3>
-    //   <button className="addToCart cart1" onClick={() => addToCart(product)}>
-    //     <i className="fas fa-shopping-cart"></i>
-    //     Add to cart
-    //   </button>
-    // </div>
   );
 };
 

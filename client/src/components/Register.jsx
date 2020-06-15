@@ -18,16 +18,15 @@ class Register extends Component {
   openUserProfile = () => {
     axios("/users/profile", {
       // TODO check is there is a better way to do it
-      headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
+      headers: { Authorization: "Bearer " + localStorage.getItem("token") },
     })
-        .then(response => {
-
-          this.props.history.push('/profile');
-          // window.location.reload();
-        })
-        .catch(error => {
-          console.log("This is the error ********* ", error)
-        })
+      .then((response) => {
+        this.props.history.push("/profile");
+        // window.location.reload();
+      })
+      .catch((error) => {
+        console.log("This is the error ********* ", error);
+      });
   };
 
   handleInputChange = (e) => {

@@ -1,6 +1,7 @@
 import {
   ADD_PRODUCT_CART,
   GET_NUMBERS_CART,
+  REMOVE_FROM_CART,
   // INCREASE_QUANTITY,
   // DECREASE_QUANTITY,
 } from "../actions/types";
@@ -16,8 +17,8 @@ export default (state = initialState, action) => {
   let productSelected = [action.payLoad];
   switch (action.type) {
     case ADD_PRODUCT_CART:
-      productSelected = { ...state.products[action.payLoad] };
-      productSelected.numbers += 1;
+      // productSelected = { ...state.products[action.payLoad] };
+      // productSelected.numbers += 1;
       // productSelected.inCart = true;
       // console.log(productSelected);
       return {
@@ -30,6 +31,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
       };
+    // case REMOVE_FROM_CART:
+    //   return state.filter((products) => product.index !== action.payload.index);
+
     // case INCREASE_QUANTITY:
     //   // state.products['shoes']
     //   productSelected = [ ...state.products[action.payLoad] ];

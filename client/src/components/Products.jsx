@@ -7,7 +7,6 @@ import ProductCard from "./ProductCard";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 const Products = (props) => {
   const [products, setProducts] = useState([]);
@@ -26,13 +25,15 @@ const Products = (props) => {
     getProducts();
   }, []);
   return (
-    <Row>
-      {products.map((product) => (
-        <Row key={product.id}>
-          <ProductCard product={product} />
-        </Row>
-      ))}
-    </Row>
+    <div>
+      <Row>
+        {products.map((product) => (
+          <Row key={product.id}>
+            <ProductCard product={product} />
+          </Row>
+        ))}
+      </Row>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_CART } from "./types";
+import { ADD_PRODUCT_CART, REMOVE_FROM_CART } from "./types";
 
 export const addToCart = (product) => {
   return (dispatch) => {
@@ -10,4 +10,7 @@ export const addToCart = (product) => {
       payLoad: product,
     });
   };
+};
+export const removeFromCart = (index) => (dispatch) => {
+  dispatch({ type: REMOVE_FROM_CART, payload: index });
 };
