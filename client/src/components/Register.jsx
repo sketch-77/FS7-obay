@@ -21,7 +21,7 @@ class Register extends Component {
       headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
     })
         .then(response => {
-          localStorage.setItem("user", JSON.stringify(response.data.user));
+
           this.props.history.push('/profile');
           // window.location.reload();
         })
@@ -50,7 +50,7 @@ class Register extends Component {
       },
     })
       .then((response) => {
-        console.log(localStorage.getItem("user"));
+        localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         console.log(response.data);
         this.openUserProfile();

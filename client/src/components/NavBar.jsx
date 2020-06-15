@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
@@ -11,19 +11,21 @@ import {getNumbers} from "../actions/getAction";
 import compose from 'recompose/compose'
 
 
-
 function NavBar(props) {
 
-const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
 
 
     useEffect(() => {
         getNumbers();
     }, []);
 
+    useEffect(() => {
+        setCurrentUser(JSON.parse(localStorage.getItem('user')));
+    }, [localStorage.getItem('user')]);
 
 
-    const logOut =() =>{
+    const logOut = () => {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         //open homepage on logout
@@ -43,18 +45,25 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('
                     <Nav.Link as={NavLink} to="/">
                         Home
                     </Nav.Link>
-                    <Nav.Link as={NavLink} to="/register">
-                        Register
-                    </Nav.Link>
+
+                    {currentUser ?
+                        null : <Nav.Link as={NavLink} to="/register">
+                            Register
+                        </Nav.Link>
+                    }
                     <Nav.Link as={NavLink} to="/products">
                         Products
                     </Nav.Link>
                     <Nav.Link as={NavLink} to="/addproduct">
                         Add Products
                     </Nav.Link>
-                    <Nav.Link as={NavLink} to="/profile">
-                        Profile
-                    </Nav.Link>
+                    {currentUser ?
+                        <Nav.Link as={NavLink} to="/profile">
+                            Profile
+                        </Nav.Link>
+                        :
+                        null
+                    }
                     {
                         currentUser ?
                             <Form inline>

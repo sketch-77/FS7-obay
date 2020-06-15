@@ -7,6 +7,8 @@ var fs = require("fs");
 var path = require("path");
 const { v4: uuidv4 } = require("uuid");
 var mime = require("mime-types");
+const strategy = require("../guards/strategy");
+const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn")
 
 //get product
 const getProduct = async (obj) => {
@@ -31,10 +33,48 @@ const getAllProducts = (req, res) => {
 /* GET all products */
 router.get("/", getAllProducts);
 
-/* CREATE a new product */
-router.post("/", function (req, res) {
+// /* CREATE a new product */
+// router.post("/", function (req, res) {
+//   console.log("I am hereeee", req.body);
+//   const { category, price, description, title, sellerId } = req.body;
+//   const { img } = req.files;
+//
+//   var extension = mime.extension(img.mimetype);
+//   var filename = uuidv4() + "." + extension;
+//
+//   var tmp_path = img.tempFilePath;
+//   var target_path = path.join(__dirname, "../public/img/") + filename;
+//
+//   fs.rename(tmp_path, target_path, function (err) {
+//     if (err) throw err;
+//
+//     //at this point, filename contains the path of the image
+//
+//     try {
+//       models.Product.create({
+//         category,
+//         price,
+//         description,
+//         img: filename,
+//         title,
+//         sellerId
+//       }).then((product) => {
+//         console.log(product);
+//         res.send(product);
+//       });
+//     } catch (err) {
+//       console.log("this is error ", err);
+//       res.status(500).send(err);
+//     }
+//   });
+// });
+
+
+
+/* CREATE a new product PROTECTED ROUTE */
+router.post("/", userMustBeLoggedIn, function (req, res) {
   console.log("I am hereeee", req.body);
-  const { category, price, description, title } = req.body;
+  const { category, price, description, title, sellerId } = req.body;
   const { img } = req.files;
 
   var extension = mime.extension(img.mimetype);
@@ -55,6 +95,7 @@ router.post("/", function (req, res) {
         description,
         img: filename,
         title,
+        sellerId
       }).then((product) => {
         console.log(product);
         res.send(product);
@@ -65,6 +106,7 @@ router.post("/", function (req, res) {
     }
   });
 });
+
 
 /* Get ProductById */
 router.get("/:id", function (req, res, next) {

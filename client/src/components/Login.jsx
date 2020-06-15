@@ -27,7 +27,7 @@ class Login extends Component {
             headers: {"Authorization": "Bearer " + localStorage.getItem("token")}
         })
             .then(response => {
-                localStorage.setItem("user", JSON.stringify(response.data.user));
+
                 this.props.history.push('/profile');
                 // window.location.reload();
             })
@@ -48,6 +48,7 @@ class Login extends Component {
             })
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
+                    localStorage.setItem("user", JSON.stringify(response.data.user));
                     this.openUserProfile();
                 })
         } catch (error) {
