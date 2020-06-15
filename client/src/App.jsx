@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Store.js";
+
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Products from "./components/Products";

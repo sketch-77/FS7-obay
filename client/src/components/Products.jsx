@@ -23,6 +23,8 @@ const Products = (props) => {
   useEffect(() => {
     getProducts();
   }, []);
+
+
   return (
     <div>
       <Row>
