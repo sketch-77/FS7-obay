@@ -54,9 +54,6 @@ function NavBar(props) {
                     <Nav.Link as={NavLink} to="/products">
                         Products
                     </Nav.Link>
-                    <Nav.Link as={NavLink} to="/addproduct">
-                        Add Products
-                    </Nav.Link>
                     {currentUser ?
                         <Nav.Link as={NavLink} to="/profile">
                             Profile
