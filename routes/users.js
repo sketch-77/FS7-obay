@@ -3,31 +3,12 @@ let router = express.Router();
 let models = require("../models/index");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-
-// import passport and passport-jwt modules
 const passport = require("passport");
-const passportJWT = require("passport-jwt");
+const strategy = require("../guards/strategy");
+const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn")
+const secretOrKey = "wowwow";
 
-// ExtractJwt to help extract the token
-let ExtractJwt = passportJWT.ExtractJwt;
 
-// JwtStrategy which is the strategy for the authentication
-let JwtStrategy = passportJWT.Strategy;
-let jwtOptions = {};
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = "wowwow";
-
-// lets create our strategy for web token
-let strategy = new JwtStrategy(jwtOptions, async function (jwt_payload, next) {
-    //add async function
-    console.log("payload received", jwt_payload);
-    let user = await getUser({id: jwt_payload.id}); //Add await
-    if (user) {
-        next(null, user);
-    } else {
-        next(null, false);
-    }
-});
 // use the strategy for authentification
 passport.use(strategy);
 
@@ -57,7 +38,7 @@ router.post(`/login`, async function (req, res, next) {
             // the only personalized value that goes into our token
             let payload = {id: user.id};
             console.log("token ok!");
-            let token = jwt.sign(payload, jwtOptions.secretOrKey);
+            let token = jwt.sign(payload, secretOrKey);
             res.json({msg: "ok", token: token});
         } else {
             res.status(401).json({msg: "Password is incorrect"});
@@ -68,7 +49,8 @@ router.post(`/login`, async function (req, res, next) {
 // Get profile rote
 router.get(
     '/profile',
-    passport.authenticate('jwt', {session: false}),
+    // passport.authenticate('jwt', {session: false}),
+    userMustBeLoggedIn,
     (req, res) => {
         res.json({
             msg: 'Congrats! You are seeing this because you are authorized',
