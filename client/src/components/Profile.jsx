@@ -33,9 +33,6 @@ class Profile extends React.Component {
         console.log("**************", JSON.parse(localStorage.getItem('user')))
     }
 
-    showProducts() {
-        return <Products FETCH_URL={this.FETCH_URL} fetchParams={this.fetchParams}/>
-    }
 
     render() {
         const {firstName, lastName, email, password} = this.state.currentUser;
@@ -82,7 +79,6 @@ class Profile extends React.Component {
                                             </Col>
                                         </Form.Group>
                                     </Form>
-                                    <Button onClick={this.showProducts}>Show Listed Products</Button>
                                 </div>
                             </div>
                         </Tab>
