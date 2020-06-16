@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Route, withRouter } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 import { NavLink } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
 
 class Register extends Component {
   constructor(props) {
@@ -60,8 +60,36 @@ class Register extends Component {
       .catch((error) => {
         console.log(error);
       });
-  };
 
+    // adding Button Loading State to the register button
+    // function simulateNetworkRequest() {
+    //   return new Promise((resolve) => setTimeout(resolve, 2000));
+    // }
+
+    // function LoadingButton() {
+    //   const [isLoading, setLoading] = useState(false);
+
+    //   useEffect(() => {
+    //     if (isLoading) {
+    //       simulateNetworkRequest().then(() => {
+    //         setLoading(false);
+    //       });
+    //     }
+    //   }, [isLoading]);
+
+    //   const handleClick = () => setLoading(true);
+
+    //   return (
+    //     <Button
+    //       variant="primary"
+    //       disabled={isLoading}
+    //       onClick={!isLoading ? handleClick : null}
+    //     >
+    //       {isLoading ? "Loading…" : "Click to Register"}
+    //     </Button>
+    //   );
+    // }
+  };
   render() {
     // const { firstName, lastName, email, password } = this.state;
     return (
@@ -99,7 +127,6 @@ class Register extends Component {
                 placeholder="Enter email"
               />
             </div>
-
             <div className="form-group">
               <label>Password</label>
               <input
@@ -110,13 +137,14 @@ class Register extends Component {
                 placeholder="Enter password"
               />
             </div>
-            <button
+
+            <Button
               onClick={this.handleRegister}
               type="Register"
               className="btn btn-primary btn-block"
             >
               Register
-            </button>
+            </Button>
             <p className="forgot-password text-right">
               Already registered? <a href="#">Login</a>
               <Nav.Link as={NavLink} to="/login"></Nav.Link>
