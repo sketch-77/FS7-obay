@@ -4,7 +4,6 @@ import "../App.css";
 // import { addToCart } from "../actions/addAction";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 

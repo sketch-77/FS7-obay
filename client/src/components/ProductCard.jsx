@@ -6,8 +6,7 @@ import ListGroupItem from "react-bootstrap/ListGroupItem";
 import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
 import utils from "./utils";
-
-// const apiRoot = "/products";
+import { NavLink } from "react-router-dom";
 import { addToCart } from "../actions/addAction";
 
 const ProductCard = ({ product, addToCart }) => {
@@ -17,7 +16,9 @@ const ProductCard = ({ product, addToCart }) => {
         <Card.Img variant="top" src={`/img/${product.img}`} />
         <Card.Body>
           <Card.Title>
-            <strong>{product.title}</strong>
+            <NavLink to={`/products/${product.id}`}>
+              <strong>{product.title}</strong>
+            </NavLink>
           </Card.Title>
           <Card.Text>{product.description}</Card.Text>
         </Card.Body>
@@ -29,7 +30,7 @@ const ProductCard = ({ product, addToCart }) => {
             <strong>Category:</strong> {product.category}
           </ListGroupItem>
         </ListGroup>
-
+        ​
         <Button variant="secondary" onClick={() => addToCart(product)}>
           <i className="fas fa-shopping-cart"></i>
           Add to cart
