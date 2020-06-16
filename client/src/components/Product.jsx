@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-// import ProductCard from "./ProductCard";
-// import Row from "react-bootstrap/Row";
+import ProductCard from "./ProductCard";
+import Row from "react-bootstrap/Row";
 
-export default function Product() {
-  const [product, setProduct] = useState([]);
+export default function Products() {
+  const [products, setProduct] = useState([]);
   const { id } = useParams();
 
   let getProductById = () => {
     try {
-      axios(`/product/${id}`, {
+      axios(`/products/${id}`, {
         method: "GET",
       }).then((response) => {
         setProduct(response.data);
@@ -25,5 +25,19 @@ export default function Product() {
     getProductById();
   }, []);
 
-  return <div>This is one product with id {id}</div>;
+  return (
+    <div>
+      {console.log(products)}
+      <div>This is one product with id {id}</div>
+      <div>
+        {/* <Row>
+          {products.map((product) => (
+            <Row key={product.id}>
+              <ProductCard product={product} />
+            </Row>
+          ))}
+        </Row> */}
+      </div>
+    </div>
+  );
 }
