@@ -57,9 +57,7 @@ function Cart({ cartProps }) {
                   ></ion-icon>
                 </div>
                 <div className="total">
-                  {" "}
-                  Sum:
-                  {product.price * product.qty}
+                  {utils.formatCurrency(product.price * product.qty)}{" "}
                 </div>
               </Fragment>
             ))}
