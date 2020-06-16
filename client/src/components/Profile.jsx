@@ -26,7 +26,7 @@ componentWillMount() {
     render() {
         const { firstName, lastName, email, password } = this.state.currentUser;
         return (
-            <div>
+            <Row>
                 <h1 style={{color: "white", textAlign: "center"}}>Welcome back! You logged in as {firstName}</h1>
                 <hr/>
                 <Col>
@@ -73,7 +73,7 @@ componentWillMount() {
                 <Col>
                     <AddProduct/>
                 </Col>
-            </div>
+            </Row>
 
         );
     }
