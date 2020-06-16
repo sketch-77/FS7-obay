@@ -89,3 +89,5 @@ const mapStateToProps = (state) => ({
   cartProps: state.cartState,
 });
 export default connect(mapStateToProps)(Cart);
+
+//{ productQuantity } rember to add this to export prop
