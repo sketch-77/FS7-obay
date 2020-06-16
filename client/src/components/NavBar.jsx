@@ -38,8 +38,8 @@ function NavBar(props) {
   };
 
   return (
-    <Navbar sticky="top" bg="light" expand="sm">
-      <Navbar.Brand href="#home" className="mr-5">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="#home">
         <img
           src="/logo.svg"
           height="30"
@@ -47,8 +47,8 @@ function NavBar(props) {
           alt="AfriKbay-logo"
         />
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/">
             Home

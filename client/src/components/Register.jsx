@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
+
+import { NavLink } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 
 class Register extends Component {
   constructor(props) {
@@ -116,6 +119,7 @@ class Register extends Component {
             </button>
             <p className="forgot-password text-right">
               Already registered? <a href="#">Login</a>
+              <Nav.Link as={NavLink} to="/login"></Nav.Link>
             </p>
           </div>
         </div>
