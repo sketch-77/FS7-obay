@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+// import {ReactComponent as logo} from "./public";
+
 import { NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { getNumbers } from "../actions/getAction";
@@ -35,8 +38,15 @@ function NavBar(props) {
   };
 
   return (
-    <Navbar bg="light" expand="sm">
-      <Navbar.Brand href="#home">oBay</Navbar.Brand>
+    <Navbar sticky="top" bg="light" expand="sm">
+      <Navbar.Brand href="#home" className="mr-5">
+        <img
+          src="/logo.svg"
+          height="30"
+          className="d-inline-block align"
+          alt="AfriKbay-logo"
+        />
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
@@ -51,6 +61,9 @@ function NavBar(props) {
           )}
           <Nav.Link as={NavLink} to="/products">
             Products
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/addproduct">
+            Add Products
           </Nav.Link>
           {currentUser ? (
             <Nav.Link as={NavLink} to="/profile">
@@ -71,6 +84,7 @@ function NavBar(props) {
             </Nav.Link>
           )}
         </Nav>
+
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-success">Search products</Button>
