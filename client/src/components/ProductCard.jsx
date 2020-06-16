@@ -12,15 +12,15 @@ import { addToCart } from "../actions/addAction";
 const ProductCard = ({ product, addToCart }) => {
   return (
     <CardGroup className="m-4 p-0">
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={`/img/${product.img}`} />
+      <Card style={{ width: "16rem" }}>
+        <Card.Img style={{  "width": "100%", "height": "15vw", "objectFit": "cover" }} variant="top" src={`/img/${product.img}`} />
         <Card.Body>
           <Card.Title>
             <NavLink to={`/products/${product.id}`}>
               <strong>{product.title}</strong>
             </NavLink>
           </Card.Title>
-          <Card.Text>{product.description}</Card.Text>
+          {/*<Card.Text>{product.description}</Card.Text>*/}
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroupItem>

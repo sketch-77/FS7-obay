@@ -23,21 +23,10 @@ function App() {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [userProducts, setUserProducts] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
-
-    let getAllProducts = () => {
-        axios(`/products`, {
-            method: "GET",
-        })
-            .then((response) => {
-                setAllProducts(response.data);
-            })
-            .catch((error) => {
-                console.log("This is the error ********* ", error);
-            });
-    };
-    useEffect(() => {
-        getAllProducts();
-    }, []);
+    const [FETCH_URL, setFETCH_URL] = useState(`/products/all`);
+    const [fetchParams, setfetchParams] = useState({
+        method: "GET",
+    });
 
     return (
         <Provider store={store}>
@@ -51,16 +40,16 @@ function App() {
                         </Route>
                         <Route path="/login" component={Login}/>
                         <Route path="/protected" component={Protected}/>
-                        <Route path="/products" component={Products}/>
+                        <Route path="/products">
+                            <Products FETCH_URL={FETCH_URL} fetchParams={fetchParams}
+                            ></Products>
+                        </Route>
                         <Route path="/Cart" component={Cart}/>
                         <Route path="/register" component={Register}/>
                         <Route path="/profile">
                             <Profile userProducts = {userProducts}
                             ></Profile>
                         </Route>
-                        {/*<Route path="/profile" component={Profile}/>*/}
-                        <Route path="/addproduct" component={AddProduct}/>
-
                     </Switch>
                 </div>
             </Router>

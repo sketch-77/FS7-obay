@@ -74,9 +74,7 @@ class AddProduct extends Component {
         },
       })
       .then((res) => {
-        console.log("**** FORM DATA FRONTEND *******");
         console.log(formData);
-        console.log("**** Response frontend *******");
         console.log(res);
       });
   };
@@ -86,8 +84,6 @@ class AddProduct extends Component {
     return (
       <div className="container">
         <div className="card card-body">
-          <h2>Add product</h2>
-          <hr />
           <Form.Group controlId="formBasicTitle">
             <Form.Label>Product title</Form.Label>
             <Form.Control

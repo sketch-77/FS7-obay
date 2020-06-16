@@ -11,10 +11,14 @@ import ProductCard from "./ProductCard";
 
 const Products = (props) => {
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    console.log("********** my fetch url ********* ");
+    console.log(props.FETCH_URL);
+  }, []);
+
   let getProducts = () => {
-    axios(`/products`, {
-      method: "GET",
-    })
+    axios(`${props.FETCH_URL}`, props.fetchParams)
       .then((response) => {
         setProducts(response.data);
       })

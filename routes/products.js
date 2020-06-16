@@ -31,7 +31,7 @@ const getAllProducts = (req, res) => {
 };
 
 /* GET all products */
-router.get("/", getAllProducts);
+router.get("/all", getAllProducts);
 
 // /* CREATE a new product */
 // router.post("/", function (req, res) {
@@ -128,6 +128,23 @@ router.post("/", userMustBeLoggedIn, function (req, res) {
     }
   });
 });
+
+// Get all products of the user
+router.get("/", userMustBeLoggedIn,  (req, res) => {
+  console.log("***** MY USER FROM REQ")
+  const {sellerId} = req.user.id;
+  console.log(sellerId)
+
+    //at this point, filename contains the path of the image
+    try {
+      req.user.getProducts().then((products) => {res.send(products);});
+    } catch (err) {
+      console.log("this is error ", err);
+      res.status(500).send(err);
+    }
+});
+
+
 
 
 // router.delete("/:id", (req, res) => {
