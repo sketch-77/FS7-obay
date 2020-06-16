@@ -39,12 +39,11 @@ function NavBar(props) {
 
   return (
     <Navbar sticky="top" bg="light" expand="sm">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="#home" className="mr-5">
         <img
           src="/logo.svg"
-          width="30"
           height="30"
-          className="d-inline-block align-"
+          className="d-inline-block align"
           alt="AfriKbay-logo"
         />
       </Navbar.Brand>
@@ -85,6 +84,7 @@ function NavBar(props) {
             </Nav.Link>
           )}
         </Nav>
+
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-success">Search products</Button>

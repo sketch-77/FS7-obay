@@ -2,8 +2,9 @@
 import { connect } from "react-redux";
 import React, { useState, Fragment } from "react";
 // import { productQuantity } from "..actions/productQuantity";
-import "../Product.css";
+import "../assets/Cart.css";
 import utils from "./utils";
+
 function Cart({ cartProps }) {
   console.log(cartProps);
   const [count, setCount] = useState(0);
