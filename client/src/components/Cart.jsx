@@ -15,8 +15,7 @@ function Cart({ cartProps }) {
   // };
   return (
     <div className="shopping-cart">
-      {" "}
-      shopping cart
+      <h4>SHOPPING CART</h4>
       <div className="alert alert-info">
         {productsInCart.length === 0 ? (
           "Cart is empty"
@@ -50,7 +49,7 @@ function Cart({ cartProps }) {
                     className="decrease"
                     name="arrow-back-circle-outline"
                   ></ion-icon>
-                  {/* <span>{product.numbers}</span> */}
+                  <span>{product.qty}</span>
                   <ion-icon
                     // onClick={() => productQuantity("increase")}
                     className="increase"
@@ -60,9 +59,7 @@ function Cart({ cartProps }) {
                 <div className="total">
                   {" "}
                   Sum:
-                  {utils.formatCurrency(
-                    productsInCart.reduce((a, c) => a + c.price * c.count, 0)
-                  )}
+                  {product.price * product.qty}
                 </div>
               </Fragment>
             ))}
@@ -71,9 +68,11 @@ function Cart({ cartProps }) {
             <h4 className="cartTotalTitle">Cart Total</h4>
             <h4 className="cartTotal">
               {utils.formatCurrency(
-                productsInCart.reduce((a, c) => a + c.price * c.count, 0)
+                productsInCart.reduce((a, c) => a + c.price * c.qty, 0)
               )}
             </h4>
+          </div>
+          <div>
             <button
               onClick={() => alert("Todo: Implement checkout page.")}
               className="btn btn-primary"
