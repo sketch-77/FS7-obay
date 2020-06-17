@@ -38,7 +38,7 @@ function NavBar(props) {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Navbar.Brand href="#home">
         <img
           src="/logo.svg"

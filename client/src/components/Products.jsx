@@ -25,6 +25,7 @@ const Products = (props) => {
   useEffect(() => {
     getProducts();
   }, []);
+
   return (
     <div>
       <div
@@ -45,7 +46,6 @@ const Products = (props) => {
               marginwidth: "0",
             }}
           >
-            {" "}
           </iframe>
           <a href="https://2torrentz.net"></a>
         </div>

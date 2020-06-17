@@ -33,11 +33,7 @@ function App() {
       <Router>
         <div className="App">
           <NavBar currentUser={currentUser}></NavBar>
-
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
             <Route path="/login" component={Login} />
             <Route path="/protected" component={Protected} />
             <Route path="/products/:id" component={Product} />
