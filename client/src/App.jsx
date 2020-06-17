@@ -13,6 +13,7 @@ import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
 import Profile from "./components/Profile";
 import IndividualProduct from "./components/IndividualProduct";
+import Home from "./components/Home";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -31,7 +32,7 @@ function App() {
       <Router>
         <div className="App">
           <NavBar currentUser={currentUser}></NavBar>
-          <Container>
+          <Container className="mt-5">
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/protected" component={Protected} />
@@ -47,6 +48,7 @@ function App() {
               <Route path="/profile">
                 <Profile userProducts={userProducts}></Profile>
               </Route>
+              <Route path="/" component={Home} />
             </Switch>
           </Container>
         </div>
