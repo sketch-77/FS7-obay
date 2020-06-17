@@ -31,6 +31,7 @@ export default function IndividualProduct() {
   return (
     <div>
       <div>This is one product with id {id}</div>
+      <div>{/* <Map /> */}</div>
       <div>
         <Row>
           <ProductCard showDescription={true} product={product} />
