@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
 import Row from "react-bootstrap/Row";
 
 export default function Products() {
-  const [products, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const { id } = useParams();
 
   let getProductById = () => {
@@ -14,6 +14,8 @@ export default function Products() {
         method: "GET",
       }).then((response) => {
         setProduct(response.data);
+
+        console.log("My data");
         console.log(response.data);
       });
     } catch (error) {
@@ -27,16 +29,11 @@ export default function Products() {
 
   return (
     <div>
-      {console.log(products)}
       <div>This is one product with id {id}</div>
       <div>
-        {/* <Row>
-          {products.map((product) => (
-            <Row key={product.id}>
-              <ProductCard product={product} />
-            </Row>
-          ))}
-        </Row> */}
+        <Row>
+              <ProductCard showDescription={true} product={product} />
+        </Row>
       </div>
     </div>
   );
