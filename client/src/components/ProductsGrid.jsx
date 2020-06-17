@@ -45,8 +45,7 @@ const ProductsGrid = (props) => {
               marginheight: "0",
               marginwidth: "0",
             }}
-          >
-          </iframe>
+          ></iframe>
         </div>
       </div>
       <div>
