@@ -30,6 +30,7 @@ export default function Product() {
     <div>
       {console.log(product)}
       <div>This is one product with id {id}</div>
+      <div>{/* <Map /> */}</div>
       <div>
         <Map />
       </div>
