@@ -134,8 +134,6 @@ router.get("/", userMustBeLoggedIn,  (req, res) => {
   console.log("***** MY USER FROM REQ")
   const {sellerId} = req.user.id;
   console.log(sellerId)
-
-    //at this point, filename contains the path of the image
     try {
       req.user.getProducts().then((products) => {res.send(products);});
     } catch (err) {

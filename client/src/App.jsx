@@ -7,8 +7,8 @@ import store from "./Store.js";
 
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Products from "./components/Products";
-import Product from "./components/Product";
+import ProductsGrid from "./components/ProductsGrid";
+import Product from "./components/IndividualProduct";
 import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
@@ -33,19 +33,15 @@ function App() {
       <Router>
         <div className="App">
           <NavBar currentUser={currentUser}></NavBar>
-
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
             <Route path="/login" component={Login} />
             <Route path="/protected" component={Protected} />
             <Route path="/products/:id" component={Product} />
             <Route path="/products">
-              <Products
+              <ProductsGrid
                 FETCH_URL={FETCH_URL}
                 fetchParams={fetchParams}
-              ></Products>
+              ></ProductsGrid>
             </Route>
             <Route path="/Cart" component={Cart} />
             <Route path="/register" component={Register} />

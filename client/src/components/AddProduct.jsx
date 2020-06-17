@@ -75,7 +75,9 @@ class AddProduct extends Component {
       })
       .then((res) => {
         console.log(formData);
+        console.log("THIS IS MY RESPONSE ***************")
         console.log(res);
+
       });
   };
 
