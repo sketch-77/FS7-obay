@@ -19,7 +19,7 @@ const ProductCard = ({showDescription, product, addToCart}) => {
                           src={`/img/${product.img}`}/>
                 <Card.Body>
                     <Card.Title>
-                        <NavLink to={`/products/${product.id}`}>
+                        <NavLink to={`/product/${product.id}`}>
                             <strong>{product.title}</strong>
                         </NavLink>
                     </Card.Title>

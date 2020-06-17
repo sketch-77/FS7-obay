@@ -4,7 +4,7 @@ import axios from "axios";
 import ProductCard from "./ProductCard";
 import Row from "react-bootstrap/Row";
 
-export default function Products() {
+export default function IndividualProduct() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 

@@ -8,13 +8,11 @@ import store from "./Store.js";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import ProductsGrid from "./components/ProductsGrid";
-import Product from "./components/IndividualProduct";
 import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
-import AddProduct from "./components/AddProduct";
-import Home from "./components/Home";
 import Profile from "./components/Profile";
+import IndividualProduct from "./components/IndividualProduct";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -36,7 +34,7 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/protected" component={Protected} />
-            <Route path="/products/:id" component={Product} />
+            <Route path="/product/:id" component={IndividualProduct} />
             <Route path="/products">
               <ProductsGrid
                 FETCH_URL={FETCH_URL}
