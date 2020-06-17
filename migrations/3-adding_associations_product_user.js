@@ -5,8 +5,8 @@ var Sequelize = require('sequelize');
 /**
  * Actions summary:
  *
- * addColumn "sellerId" to table "Products"
- * addColumn "UserId" to table "Products"
+ * addColumn "sellerId" to table "ProductsGrid"
+ * addColumn "UserId" to table "ProductsGrid"
  *
  **/
 

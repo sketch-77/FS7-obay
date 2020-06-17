@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
-const Products = (props) => {
+const ProductsGrid = (props) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     console.log("********** my fetch url ********* ");
@@ -63,5 +63,5 @@ const Products = (props) => {
   );
 };
 
-export default Products;
-// export default connect(null, { addToCart })(Products);
+export default ProductsGrid;
+// export default connect(null, { addToCart })(ProductsGrid);

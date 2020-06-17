@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import AddProduct from "./AddProduct";
-import Products from "./Products";
+import ProductsGrid from "./ProductsGrid";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -83,8 +83,8 @@ class Profile extends React.Component {
                             </div>
                         </Tab>
                         <Tab eventKey="my-products" title="My products">
-                            <Products FETCH_URL={this.state.FETCH_URL} fetchParams={this.state.fetchParams}
-                            ></Products>
+                            <ProductsGrid FETCH_URL={this.state.FETCH_URL} fetchParams={this.state.fetchParams}
+                            ></ProductsGrid>
                         </Tab>
                         <Tab eventKey="add-product" title="Add product">
                             <AddProduct FETCH_URL={this.FETCH_URL} fetchParams={this.fetchParams}/>
