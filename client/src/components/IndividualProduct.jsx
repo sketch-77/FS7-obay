@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Maps from "./Maps";
 import ProductCard from "./ProductCard";
 import Row from "react-bootstrap/Row";
 
@@ -30,9 +31,10 @@ export default function IndividualProduct() {
   return (
     <div>
       <div>This is one product with id {id}</div>
+      <div>{/* <Map /> */}</div>
       <div>
         <Row>
-              <ProductCard showDescription={true} product={product} />
+          <ProductCard showDescription={true} product={product} />
         </Row>
       </div>
     </div>
