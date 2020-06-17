@@ -47,7 +47,6 @@ const ProductsGrid = (props) => {
             }}
           >
           </iframe>
-          <a href="https://2torrentz.net"></a>
         </div>
       </div>
       <div>
