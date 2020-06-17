@@ -31,7 +31,7 @@ const ProductCard = ({ product, addToCart }) => {
           </ListGroupItem>
         </ListGroup>
         ​
-        <Button variant="secondary" onClick={() => addToCart(product)}>
+        <Button variant="primary" onClick={() => addToCart(product)}>
           <i className="fas fa-shopping-cart"></i>
           Add to cart
         </Button>
