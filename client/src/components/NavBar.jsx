@@ -38,8 +38,8 @@ function NavBar(props) {
   };
 
   return (
-    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" sticky="top">
+      <Navbar.Brand as={NavLink} to="/">
         <img
           src="/logo.svg"
           height="30"
@@ -49,11 +49,7 @@ function NavBar(props) {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link as={NavLink} to="/">
-            Home
-          </Nav.Link>
-
+        <Nav className="mr-auto align-items-center">
           {currentUser ? null : (
             <Nav.Link as={NavLink} to="/register">
               Register
@@ -83,8 +79,12 @@ function NavBar(props) {
         </Nav>
 
         <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search products</Button>
+          <FormControl
+            type="text"
+            placeholder="Search products"
+            className="mr-sm-2"
+          />
+          <Button variant="outline-success">Search</Button>
         </Form>
 
         <Nav.Link as={NavLink} to="/Cart">
