@@ -6,6 +6,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 class Register extends Component {
   constructor(props) {
@@ -15,9 +16,9 @@ class Register extends Component {
       lastName: "",
       email: "",
       password: "",
+      loading: false,
     };
   }
-
   openUserProfile = () => {
     axios("/users/profile", {
       // TODO check is there is a better way to do it
@@ -31,7 +32,6 @@ class Register extends Component {
         console.log("This is the error ********* ", error);
       });
   };
-
   handleInputChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -39,8 +39,8 @@ class Register extends Component {
       [name]: value,
     });
   };
-
   handleRegister = () => {
+    this.setState({ loading: true });
     const { firstName, lastName, email, password } = this.state;
     axios("/users/register", {
       method: "POST",
@@ -52,6 +52,7 @@ class Register extends Component {
       },
     })
       .then((response) => {
+        this.setState({ loading: false });
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         console.log(response.data);
@@ -60,15 +61,12 @@ class Register extends Component {
       .catch((error) => {
         console.log(error);
       });
-
     // adding Button Loading State to the register button
     // function simulateNetworkRequest() {
     //   return new Promise((resolve) => setTimeout(resolve, 2000));
     // }
-
     // function LoadingButton() {
     //   const [isLoading, setLoading] = useState(false);
-
     //   useEffect(() => {
     //     if (isLoading) {
     //       simulateNetworkRequest().then(() => {
@@ -76,9 +74,7 @@ class Register extends Component {
     //       });
     //     }
     //   }, [isLoading]);
-
     //   const handleClick = () => setLoading(true);
-
     //   return (
     //     <Button
     //       variant="primary"
@@ -137,17 +133,22 @@ class Register extends Component {
                 placeholder="Enter password"
               />
             </div>
-
             <Button
               onClick={this.handleRegister}
               type="Register"
               className="btn btn-primary btn-block"
             >
-              Register
+              {this.state.loading ? (
+                <Spinner animation="border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </Spinner>
+              ) : (
+                "Register"
+              )}
             </Button>
             <p className="forgot-password text-right">
-              Already registered? <a href="#">Login</a>
-              <Nav.Link as={NavLink} to="/login"></Nav.Link>
+              Already registered?
+              <NavLink to="/login">Login</NavLink>
             </p>
           </div>
         </div>
@@ -155,5 +156,4 @@ class Register extends Component {
     );
   }
 }
-
 export default withRouter(Register);

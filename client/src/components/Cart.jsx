@@ -4,7 +4,6 @@ import React, { useState, Fragment } from "react";
 // import { productQuantity } from "..actions/productQuantity";
 import "../assets/Cart.css";
 import utils from "./utils";
-
 function Cart({ cartProps }) {
   console.log(cartProps);
   const [count, setCount] = useState(0);
@@ -26,50 +25,65 @@ function Cart({ cartProps }) {
         )}
         {productsInCart.length > 0 && <div className="item"></div>}
         <div className="container-products">
-          <div className="product-header">
-            <h5 className="product-title">PRODUCT</h5>
-            <h5 className="price sm-hide">PRICE</h5>
-            <h5 className="quantity">QUANTITY</h5>
-            <h5 className="total">TOTAL</h5>
-          </div>
-          <div className="products">
-            {productsInCart.map((product, index) => (
-              <Fragment key={index}>
-                <div className="product">
-                  <ion-icon name="close-circle-outline"></ion-icon>
-                  <img src={`/img/${product.img}`} />
-                  <span className="sm-hide"> {product.title}</span>
-                </div>
-                <div className="price sm-hide">
-                  {utils.formatCurrency(product.price)}
-                </div>
-                <div className="quantity">
-                  <ion-icon
-                    // onClick={() => productQuantity("decrease")}
-                    className="decrease"
-                    name="arrow-back-circle-outline"
-                  ></ion-icon>
-                  <span>{product.qty}</span>
-                  <ion-icon
-                    // onClick={() => productQuantity("increase")}
-                    className="increase"
-                    name="arrow-forward-circle-outline"
-                  ></ion-icon>
-                </div>
-                <div className="total">
-                  {utils.formatCurrency(product.price * product.qty)}{" "}
-                </div>
-              </Fragment>
-            ))}
-          </div>
-          <div className="cartTotalContainer">
-            <h4 className="cartTotalTitle">Cart Total</h4>
-            <h4 className="cartTotal">
-              {utils.formatCurrency(
-                productsInCart.reduce((a, c) => a + c.price * c.qty, 0)
-              )}
-            </h4>
-          </div>
+          <table className="table">
+            <thead className="">
+              <tr>
+                <th className="" colspan="3">
+                  PRODUCT
+                </th>
+                <th className="">PRICE</th>
+                <th className="">QUANTITY</th>
+                <th className="">TOTAL</th>
+              </tr>
+            </thead>
+            <tbody className="">
+              {productsInCart.map((product, index) => (
+                <tr key={index}>
+                  <td className="">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                  </td>
+                  <td className="">
+                    <img
+                      src={`/img/${product.img}`}
+                      className="img-fluid img-product"
+                    />
+                  </td>
+                  <td className="">
+                    <span className="sm-hide"> {product.title}</span>
+                  </td>
+                  <td className="">{utils.formatCurrency(product.price)}</td>
+                  <td className="product-buttons">
+                    <ion-icon
+                      // onClick={() => productQuantity("decrease")}
+                      className="decrease"
+                      name="arrow-back-circle-outline"
+                    ></ion-icon>
+                    <span>{product.qty}</span>
+                    <ion-icon
+                      // onClick={() => productQuantity("increase")}
+                      className="increase"
+                      name="arrow-forward-circle-outline"
+                    ></ion-icon>
+                  </td>
+                  <td className="">
+                    {utils.formatCurrency(product.price * product.qty)}{" "}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="">
+              <tr>
+                <td className="" colspan="3">
+                  Cart Total
+                </td>
+                <td className="">
+                  {utils.formatCurrency(
+                    productsInCart.reduce((a, c) => a + c.price * c.qty, 0)
+                  )}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
           <div>
             <button
               onClick={() => alert("Todo: Implement checkout page.")}
@@ -87,5 +101,3 @@ const mapStateToProps = (state) => ({
   cartProps: state.cartState,
 });
 export default connect(mapStateToProps)(Cart);
-
-//{ productQuantity } rember to add this to export prop
