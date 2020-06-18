@@ -19,9 +19,8 @@ class Home extends Component {
         <Row className="justify-content-md-center">
           <Col>
             <Image
-              src="/homepage.svg"
+              src="/Asset6.png"
               height="1200"
-              fluid
               className="d-inline-block align-center"
               alt="AfriKbay-logo"
             />
