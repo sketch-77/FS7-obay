@@ -36,7 +36,7 @@ export default function IndividualProduct() {
       <Row>
         <Col>
           <Row>
-            <ProductCard showDescription={true} product={product} />
+            <ProductCard showDelete={true} showDescription={true} product={product} />
           </Row>
         </Col>
         <Col>
