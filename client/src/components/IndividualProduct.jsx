@@ -14,6 +14,7 @@ export default function IndividualProduct() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
+
   let getProductById = () => {
     try {
       axios(`/products/${id}`, {
@@ -37,7 +38,11 @@ export default function IndividualProduct() {
     <div className="auth-wrapper">
       <Row>
         <Col>
-          <ProductCard showDescription={true} product={product} />
+
+          <Row>
+            <ProductCard showDelete={true} showDescription={true} product={product} />
+          </Row>
+
         </Col>
         <Col>
           <Maps />
