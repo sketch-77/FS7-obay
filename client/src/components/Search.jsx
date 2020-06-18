@@ -20,7 +20,7 @@ function Search(props) {
     };
 
     const setSearchURL = () => {
-            props.history.push(`/products/search?q=${keyword}`);
+        props.history.push(`/products/search?q=${keyword}`);
     }
 
     return (

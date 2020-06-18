@@ -18,7 +18,7 @@ import Search from "./components/Search";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
+      JSON.parse(localStorage.getItem("user"))
   );
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [userProducts, setUserProducts] = useState([]);

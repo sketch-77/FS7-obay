@@ -1,14 +1,15 @@
-var express = require("express");
+const express = require("express");
+const Sequelize = require('sequelize');
 var router = express.Router();
 var models = require("../models/index");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 var fs = require("fs");
 var path = require("path");
-const { v4: uuidv4 } = require("uuid");
+const {v4: uuidv4} = require("uuid");
 var mime = require("mime-types");
 const strategy = require("../guards/strategy");
-const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn")
+const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn");
 
 //get product
 const getProduct = async (obj) => {
@@ -70,14 +71,14 @@ router.get("/search", (req, res) => {
             //                 {description: {[Op.like]: `%${q}%`}}
             //             ]
             //     }
-                // where: {
-                //     [Op.or]: [
-                //         // {name: {[Op.like]: `%${products}%`}},
-                //         // {description: {[Op.like]: `%${products}%`}}
-                //         {name: {[Op.like]: `%flower%`}},
-                //         {description: {[Op.like]: `%flower%`}}
-                //     ]
-                // }
+            // where: {
+            //     [Op.or]: [
+            //         // {name: {[Op.like]: `%${products}%`}},
+            //         // {description: {[Op.like]: `%${products}%`}}
+            //         {name: {[Op.like]: `%flower%`}},
+            //         {description: {[Op.like]: `%flower%`}}
+            //     ]
+            // }
             // }
         ).then((product) => {
             res.send(product);
