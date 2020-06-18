@@ -65,14 +65,14 @@ function NavBar(props) {
           ) : null}
           {currentUser ? (
             <Form inline>
-              <Button variant="outline-success" onClick={logOut}>
+              <Button variant="dark" onClick={logOut}>
                 Logout
               </Button>
             </Form>
           ) : (
             <Nav.Link as={NavLink} to="/login">
               <Form inline>
-                <Button variant="outline-success">Login</Button>
+                <Button variant="dark">Login</Button>
               </Form>
             </Nav.Link>
           )}
@@ -84,7 +84,7 @@ function NavBar(props) {
             placeholder="Search products"
             className="mr-sm-2"
           />
-          <Button variant="outline-success">Search</Button>
+          <Button variant="outline-light">Search</Button>
         </Form>
 
         <Nav.Link as={NavLink} to="/Cart">

@@ -72,26 +72,6 @@ class Register extends Component {
             <Card.Body>
               <h4>New User Registration</h4>
               <hr />
-              {/* <div className="form-group">
-                <label>First name</label>
-                <input
-                  name="firstName"
-                  onChange={this.handleInputChange}
-                  type="text"
-                  className="form-control"
-                  placeholder="First name"
-                />
-              </div>
-              <div className="form-group">
-                <label>Last name</label>
-                <input
-                  name="lastName"
-                  onChange={this.handleInputChange}
-                  type="text"
-                  className="form-control"
-                  placeholder="Last name"
-                />
-              </div> */}
               <Form.Group controlId="formBasicFirstName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control

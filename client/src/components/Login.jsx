@@ -91,7 +91,7 @@ class Login extends Component {
                   <Form.Check type="checkbox" label="Remember Me!" />
                 </Form.Group>
                 <Button
-                  variant="primary"
+                  variant="outline-dark"
                   type="button"
                   onClick={this.handleLogin}
                 >
