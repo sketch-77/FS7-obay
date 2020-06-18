@@ -38,7 +38,7 @@ function App() {
             <Route path="/product/:id" component={IndividualProduct} />
             <Route path="/products">
               <ProductsGrid
-                FETCH_URL={FETCH_URL}
+                // FETCH_URL={FETCH_URL}
                 fetchParams={fetchParams}
               ></ProductsGrid>
             </Route>

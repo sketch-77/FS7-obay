@@ -52,21 +52,29 @@ router.get("/", userMustBeLoggedIn, (req, res) => {
 
 // Search products by keyword
 router.get("/search", (req, res) => {
-    // console.log("***** MY USER FROM REQ*****");
+    console.log("***** WE ARE HERE *****");
     console.log(req.query);
     const {q} = req.query;
     const Op = Sequelize.Op;
+    const params = q? {
+        where: {
+            [Op.or]: [
+                {title: {[Op.like]: `%${q}%`}},
+                {description: {[Op.like]: `%${q}%`}}
+            ]
+        } }: {};
     // console.log("MY REQ.QUERY")
     // console.log(req.query)
     try {
         models.Product.findAll(
-            {
-                where: {
-                    [Op.or]: [
-                            {title: {[Op.like]: `%${q}%`}},
-                            {description: {[Op.like]: `%${q}%`}}
-                        ]
-                }
+            params
+            // {
+            //     where: {
+            //         [Op.or]: [
+            //                 {title: {[Op.like]: `%${q}%`}},
+            //                 {description: {[Op.like]: `%${q}%`}}
+            //             ]
+            //     }
                 // where: {
                 //     [Op.or]: [
                 //         // {name: {[Op.like]: `%${products}%`}},
@@ -75,7 +83,7 @@ router.get("/search", (req, res) => {
                 //         {description: {[Op.like]: `%flower%`}}
                 //     ]
                 // }
-            }
+            // }
         ).then((product) => {
             res.send(product);
         });
