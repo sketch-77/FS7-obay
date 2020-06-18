@@ -13,6 +13,7 @@ const ProductsGrid = (props) => {
     console.log("********** my fetch url ********* ");
     console.log(props.FETCH_URL);
   }, []);
+
   let getProducts = () => {
     axios(`${props.FETCH_URL}`, props.fetchParams)
       .then((response) => {
@@ -22,34 +23,35 @@ const ProductsGrid = (props) => {
         console.log("This is the error ********* ", error);
       });
   };
+
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
     <div>
-      <div
-        className="position-relative text-align-right"
-        style={{ height: "400px", width: "400px" }}
-      >
-        <div
-          className="overflow-hidden background-none!important"
-          style={{ height: "400px", width: "400px" }}
-        >
-          <iframe
-            style={{ width: "400px", height: "400px" }}
-            src="https://maps.google.com/maps?q=barcelona%2C%20spain&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            sytle={{
-              frameborder: "0",
-              scrolling: "no",
-              marginheight: "0",
-              marginwidth: "0",
-            }}
-          >
-          </iframe>
-          <a href="https://2torrentz.net"></a>
-        </div>
-      </div>
+      {/*<div*/}
+      {/*  className="position-relative text-align-right"*/}
+      {/*  style={{ height: "400px", width: "400px" }}*/}
+      {/*>*/}
+      {/*  <div*/}
+      {/*    className="overflow-hidden background-none!important"*/}
+      {/*    style={{ height: "400px", width: "400px" }}*/}
+      {/*  >*/}
+      {/*    <iframe*/}
+      {/*      style={{ width: "400px", height: "400px" }}*/}
+      {/*      src="https://maps.google.com/maps?q=barcelona%2C%20spain&t=&z=13&ie=UTF8&iwloc=&output=embed"*/}
+      {/*      sytle={{*/}
+      {/*        frameborder: "0",*/}
+      {/*        scrolling: "no",*/}
+      {/*        marginheight: "0",*/}
+      {/*        marginwidth: "0",*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*    </iframe>*/}
+      {/*    <a href="https://2torrentz.net"></a>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <div>
         <Row>
           {products.map((product) => (

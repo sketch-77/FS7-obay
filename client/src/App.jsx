@@ -13,6 +13,7 @@ import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
 import Profile from "./components/Profile";
 import IndividualProduct from "./components/IndividualProduct";
+import Search from "./components/Search";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(

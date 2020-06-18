@@ -8,6 +8,7 @@ export default function IndividualProduct() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
+
   let getProductById = () => {
     try {
       axios(`/products/${id}`, {
