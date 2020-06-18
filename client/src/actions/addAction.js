@@ -17,11 +17,11 @@ export const addToCart = (product) => {
   };
 };
 export const removeFromCart = (product) => (dispatch) => {
-  dispatch({ type: REMOVE_FROM_CART, payload: product });
+  dispatch({ type: REMOVE_FROM_CART, payLoad: product });
 };
 export const increaseQuantity = (product) => (dispatch) => {
-  dispatch({ type: INCREASE_QUANTITY, payload: product });
+  dispatch({ type: INCREASE_QUANTITY, payLoad: product });
 };
 export const decreaseQuantity = (product) => (dispatch) => {
-  dispatch({ type: DECREASE_QUANTITY, payload: product });
+  dispatch({ type: DECREASE_QUANTITY, payLoad: product });
 };
