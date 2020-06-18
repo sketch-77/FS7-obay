@@ -9,10 +9,8 @@ import utils from "./utils";
 import {NavLink} from "react-router-dom";
 import {addToCart} from "../actions/addAction";
 
-const ProductCard = ({showDelete, showDescription, product, addToCart}) => {
-const deleteProduct = () => {
+const ProductCard = ({deleteProduct, showDelete, showDescription, product, addToCart}) => {
 
-}
     return (
         <CardGroup className="m-4 p-0">
             <Card style={{width: "16rem"}}>
@@ -25,17 +23,17 @@ const deleteProduct = () => {
                         </NavLink>
                     </Card.Title>
                     {showDescription ? <Card.Text>{product.description}</Card.Text> : null}
-                <ListGroup className="list-group-flush">
-                    <ListGroupItem>
-                        <strong> Price:</strong> {utils.formatCurrency(product.price || 0)}
-                    </ListGroupItem>
-                    <ListGroupItem>
-                        <strong>Category:</strong> {product.category}
-                    </ListGroupItem>
-                </ListGroup>
-                ​</Card.Body>
-                {showDelete ? <Button variant="danger" onClick={() => deleteProduct()}>
-                   Delete
+                    <ListGroup className="list-group-flush">
+                        <ListGroupItem>
+                            <strong> Price:</strong> {utils.formatCurrency(product.price || 0)}
+                        </ListGroupItem>
+                        <ListGroupItem>
+                            <strong>Category:</strong> {product.category}
+                        </ListGroupItem>
+                    </ListGroup>
+                    ​</Card.Body>
+                {showDelete ? <Button variant="danger" onClick={() => deleteProduct(product.id)}>
+                    Delete
                 </Button> : <Button variant="primary" onClick={() => addToCart(product)}>
                     <i className="fas fa-shopping-cart"></i>
                     Add to cart
