@@ -6,6 +6,8 @@ import { increaseQuantity } from "../actions/addAction";
 import { decreaseQuantity } from "../actions/addAction";
 import "../assets/Cart.css";
 import utils from "./utils";
+import Table from 'react-bootstrap/Table'
+import Card from "react-bootstrap/Card";
 
 function Cart({
   cartProps,
@@ -29,8 +31,8 @@ function Cart({
         )}
         {productsInCart.length > 0 && <div className="item"></div>}
         <div className="container-products">
-          <table className="table">
-            <thead className="">
+          <Table responsive="sm">
+            <thead>
               <tr>
                 <th className="" colspan="3">
                   PRODUCT
@@ -51,10 +53,10 @@ function Cart({
                       }
                     ></ion-icon>
                   </td>
-                  <td className="">
+                  <td >
                     <img
-                      src={`/img/${product.img}`}
-                      className="img-fluid img-product"
+                        style={{maxWidth:"55px", maxHeight:"55px", "objectFit": "cover"}}  variant="top"
+                        src={`/img/${product.img}`}
                     />
                   </td>
                   <td className="">
@@ -96,7 +98,7 @@ function Cart({
                 </td>
               </tr>
             </tfoot>
-          </table>
+          </Table>
           <div>
             <button
               onClick={() => alert("Todo: Implement checkout page.")}

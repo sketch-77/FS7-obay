@@ -15,6 +15,7 @@ import Profile from "./components/Profile";
 import IndividualProduct from "./components/IndividualProduct";
 import Home from "./components/Home";
 import Search from "./components/Search";
+import Footer from "./components/Footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -33,7 +34,8 @@ function App() {
       <Router>
         <div className="App">
           <NavBar currentUser={currentUser}></NavBar>
-          <Container className="mt-5">
+          <div>
+          <Container className="mt-3">
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/protected" component={Protected} />
@@ -51,20 +53,8 @@ function App() {
               <Route path="/" component={Home} />
             </Switch>
           </Container>
-          <div>
-            <footer class="footer mt-10 py-5 bg-secondary text-white">
-              <div class="container">
-                <span class="text-align-center">
-                  <h6>
-                    © 2020. AfriKbay ·{" "}
-                    <small>
-                      Creataed by Olga Daneko · Chanice Irungu· Nurjannah Omer ·
-                    </small>
-                  </h6>
-                </span>
-              </div>
-            </footer>
           </div>
+            <Footer></Footer>
         </div>
       </Router>
     </Provider>

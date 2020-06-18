@@ -1,25 +1,26 @@
 /* styling the cart page */
 
 .shopping-cart {
-  width: 750px;
-  height: 423px;
-  margin: 80px auto;
-  background: #ffffff;
+  /*max-width: 750px;*/
+  /*max-height: 423px;*/
+  /*margin: 80px auto;*/
+  background: #E6E7E8;
   box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;*/
+  /*flex-direction: column;*/
 }
 /* Let’s add some basic style to product name and description.  */
 .container-products {
-  max-width: 650px;
+  /*max-width: 650px;*/
+  /*max-height:;: 450px;*/
   justify-content: space-around;
   margin: 0 auto;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
 }
 .container-products ion-icon {
   font-size: 25px;
-  color: blue;
+  color: #E6E7E8;
   margin-left: 10px;
   margin-right: 10px;
   cursor: pointer;
@@ -71,6 +72,11 @@
 }
 .products img {
   width: 500px;
+}
+
+.img-cart{
+  max-height: 25px;
+  max-width: 25px;
 }
 .cartTotalContainer {
   display: flex;

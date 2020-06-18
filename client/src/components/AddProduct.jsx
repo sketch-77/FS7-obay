@@ -8,6 +8,7 @@ class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      addedProduct: null,
       title: "",
       description: "",
       img: null,
@@ -29,29 +30,29 @@ class AddProduct extends Component {
     // Update the state
     this.setState({ img: event.target.files[0] });
   };
-
-  onFileUpload = () => {
-    const { currentUser } = this.state;
-    // Create an object of formData
-    const formData = new FormData();
-
-    // Update the formData object
-    formData.append(
-      "imagefile",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-
-    // Request made to the backend api
-    // Send formData object
-    axios
-      .post("/images", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => console.log(res));
-  };
+  //
+  // onFileUpload = () => {
+  //   const { currentUser } = this.state;
+  //   // Create an object of formData
+  //   const formData = new FormData();
+  //
+  //   // Update the formData object
+  //   formData.append(
+  //     "imagefile",
+  //     this.state.selectedFile,
+  //     this.state.selectedFile.name
+  //   );
+  //
+  //   // Request made to the backend api
+  //   // Send formData object
+  //   axios
+  //     .post("/images", formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     })
+  //     .then((res) => console.log(res));
+  // };
 
   handleAddProduct = () => {
     const { title, description, img, price, category } = this.state;
@@ -74,10 +75,9 @@ class AddProduct extends Component {
         },
       })
       .then((res) => {
-        console.log(formData);
+        this.setState({addedProduct: res.data})
         console.log("THIS IS MY RESPONSE ***************")
-        console.log(res);
-
+        console.log(res.data);
       });
   };
 
