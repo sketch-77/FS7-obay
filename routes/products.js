@@ -1,15 +1,14 @@
-const express = require("express");
-const Sequelize = require('sequelize');
+var express = require("express");
 var router = express.Router();
 var models = require("../models/index");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 var fs = require("fs");
 var path = require("path");
-const {v4: uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 var mime = require("mime-types");
 const strategy = require("../guards/strategy");
-const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn");
+const userMustBeLoggedIn = require("../guards/userMustBeLoggedIn")
 
 //get product
 const getProduct = async (obj) => {
@@ -31,10 +30,6 @@ const getAllProducts = (req, res) => {
     }
 };
 
-/* GET all products */
-router.get("/all", getAllProducts);
-
-
 // Get all products of the user
 router.get("/", userMustBeLoggedIn, (req, res) => {
     console.log("***** MY USER FROM REQ")
@@ -50,23 +45,31 @@ router.get("/", userMustBeLoggedIn, (req, res) => {
     }
 });
 
-// Search products by keyword
+// Get all products or Search products by keyword
 router.get("/search", (req, res) => {
-    // console.log("***** MY USER FROM REQ*****");
+    console.log("***** WE ARE HERE *****");
     console.log(req.query);
     const {q} = req.query;
     const Op = Sequelize.Op;
+    const params = q? {
+        where: {
+            [Op.or]: [
+                {title: {[Op.like]: `%${q}%`}},
+                {description: {[Op.like]: `%${q}%`}}
+            ]
+        } }: {};
     // console.log("MY REQ.QUERY")
     // console.log(req.query)
     try {
         models.Product.findAll(
-            {
-                where: {
-                    [Op.or]: [
-                            {title: {[Op.like]: `%${q}%`}},
-                            {description: {[Op.like]: `%${q}%`}}
-                        ]
-                }
+            params
+            // {
+            //     where: {
+            //         [Op.or]: [
+            //                 {title: {[Op.like]: `%${q}%`}},
+            //                 {description: {[Op.like]: `%${q}%`}}
+            //             ]
+            //     }
                 // where: {
                 //     [Op.or]: [
                 //         // {name: {[Op.like]: `%${products}%`}},
@@ -75,7 +78,7 @@ router.get("/search", (req, res) => {
                 //         {description: {[Op.like]: `%flower%`}}
                 //     ]
                 // }
-            }
+            // }
         ).then((product) => {
             res.send(product);
         });

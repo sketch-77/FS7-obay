@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { getNumbers } from "../actions/getAction";
 import compose from "recompose/compose";
+import Search from "./Search";
 
 function NavBar(props) {
   const [currentUser, setCurrentUser] = useState(
@@ -77,16 +78,7 @@ function NavBar(props) {
             </Nav.Link>
           )}
         </Nav>
-
-        <Form inline>
-          <FormControl
-            type="text"
-            placeholder="Search products"
-            className="mr-sm-2"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
-
+<Search></Search>
         <Nav.Link as={NavLink} to="/Cart">
           <i className="fas fa-shopping-cart"></i>
           Cart <span>{props.cartProps.products.length}</span>

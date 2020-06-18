@@ -14,6 +14,7 @@ import Protected from "./components/Protected";
 import Profile from "./components/Profile";
 import IndividualProduct from "./components/IndividualProduct";
 import Home from "./components/Home";
+import Search from "./components/Search";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -39,7 +40,6 @@ function App() {
               <Route path="/product/:id" component={IndividualProduct} />
               <Route path="/products">
                 <ProductsGrid
-                  FETCH_URL={FETCH_URL}
                   fetchParams={fetchParams}
                 ></ProductsGrid>
               </Route>

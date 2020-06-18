@@ -12,11 +12,7 @@ function Search(props) {
     const {value, bind, reset} = useInput('');
     const [products, setProducts] = useState([]);
     const [keyword, setKeyword] = useState("")
-    const { search } = useLocation();
 
-    useEffect(() => {
-        getSearchedItems();
-    }, [search]);
 
     const handleInputChange = event => {
         const {name, value} = event.target;
@@ -25,20 +21,6 @@ function Search(props) {
 
     const setSearchURL = () => {
             props.history.push(`/products/search?q=${keyword}`);
-    }
-
-    const getSearchedItems = async (req, res, next) => {
-        console.log("MY PRODUCTS SEARCH KEYWORD FROM REQ.QUERY ", search)
-        axios(`/products/search${search}`, {
-            method: "GET",
-        })
-            .then((response) => {
-                setProducts(response.data);
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log("This is the error ********* ", error);
-            });
     }
 
     return (
