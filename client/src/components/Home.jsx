@@ -15,7 +15,7 @@ class Home extends Component {
   render() {
     return (
       <div className="auth-wrapper">
-        <div className="auth-inner mb-5"></div>
+        <div className="mb-5"></div>
         <Row className="justify-content-md-center">
           <Col>
             <Image
@@ -28,7 +28,7 @@ class Home extends Component {
         </Row>
 
         <div className="auth-wrapper">
-          <div className="auth-inner mb-5">
+          <div className="mb-5">
             <Carousel>
               <Carousel.Item>
                 <img

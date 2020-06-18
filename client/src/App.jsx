@@ -32,7 +32,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
+        <div className="App" style={{maxHeight:"100%"}}>
           <NavBar currentUser={currentUser}></NavBar>
           <div>
           <Container className="mt-3">

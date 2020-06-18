@@ -44,7 +44,7 @@ class Profile extends React.Component {
                     <Tabs defaultActiveKey="profile">
                         <Tab eventKey="profile" title="Profile">
                             <div className="container">
-                                <div className="card card-body">
+                                <div className="form-wrapper">
                                     <Form>
                                         <Form.Group as={Row} controlId="formPlaintextName">
                                             <Form.Label column sm="4">
