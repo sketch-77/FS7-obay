@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
+import "../assets/Cart.css";
 import Maps from "./Maps";
 import ProductCard from "./ProductCard";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "../assets/Cart.css";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 export default function IndividualProduct() {
   const [product, setProduct] = useState({});
@@ -31,17 +34,13 @@ export default function IndividualProduct() {
   }, []);
 
   return (
-    <div>
+    <div className="auth-wrapper">
       <Row>
         <Col>
-          <Row>
-            <ProductCard showDescription={true} product={product} />
-          </Row>
+          <ProductCard showDescription={true} product={product} />
         </Col>
         <Col>
-          <div className="Map">
-            <Maps />
-          </div>
+          <Maps />
         </Col>
       </Row>
     </div>

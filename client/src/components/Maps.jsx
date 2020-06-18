@@ -7,11 +7,11 @@ export default function Maps() {
       style={{ height: "800px", width: "800px" }}
     >
       <div
-        className="overflow-hidden background-none!important"
+        className="overflow-hidden background-white!important"
         style={{ height: "800px", width: "800px" }}
       >
         <iframe
-          style={{ width: "600px", height: "550px" }}
+          style={{ width: "400px", height: "400px" }}
           src="https://maps.google.com/maps?q=Nairobi%20Haileselasie&t=k&z=13&ie=UTF8&iwloc=&output=embed"
           sytle={{
             frameborder: "0",
