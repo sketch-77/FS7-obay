@@ -31,10 +31,6 @@ const getAllProducts = (req, res) => {
     }
 };
 
-/* GET all products */
-router.get("/all", getAllProducts);
-
-
 // Get all products of the user
 router.get("/", userMustBeLoggedIn, (req, res) => {
     console.log("***** MY USER FROM REQ")
@@ -50,7 +46,7 @@ router.get("/", userMustBeLoggedIn, (req, res) => {
     }
 });
 
-// Search products by keyword
+// Get all products or Search products by keyword
 router.get("/search", (req, res) => {
     console.log("***** WE ARE HERE *****");
     console.log(req.query);
