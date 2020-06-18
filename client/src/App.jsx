@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Store.js";
