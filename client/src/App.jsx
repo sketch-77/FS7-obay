@@ -31,7 +31,7 @@ function App() {
       <Router>
         <div className="App">
           <NavBar currentUser={currentUser}></NavBar>
-          <Container>
+          <Container className="mt-5">
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/protected" component={Protected} />

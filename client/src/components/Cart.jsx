@@ -1,17 +1,21 @@
 // import React, { fragment } from "react";
 import { connect } from "react-redux";
 import React, { useState, Fragment } from "react";
-// import { productQuantity } from "..actions/productQuantity";
+import { removeFromCart } from "../actions/addAction";
+import { increaseQuantity } from "../actions/addAction";
+import { decreaseQuantity } from "../actions/addAction";
 import "../assets/Cart.css";
 import utils from "./utils";
-function Cart({ cartProps }) {
-  console.log(cartProps);
-  const [count, setCount] = useState(0);
+
+function Cart({
+  cartProps,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+}) {
   let productsInCart = cartProps.products;
-  // handleRemoveFromCart = (e, product) => {
-  //   productsInCart = productsInCart.filter((a) => a.index !== product.index);
-  //   return { productsInCart };
-  // };
+  let removeItemFromBasket = removeFromCart.products;
+
   return (
     <div className="shopping-cart">
       <h4>SHOPPING CART</h4>
@@ -40,7 +44,12 @@ function Cart({ cartProps }) {
               {productsInCart.map((product, index) => (
                 <tr key={index}>
                   <td className="">
-                    <ion-icon name="close-circle-outline"></ion-icon>
+                    <ion-icon
+                      name="close-circle-outline"
+                      onClick={() =>
+                        removeFromCart(removeItemFromBasket, product)
+                      }
+                    ></ion-icon>
                   </td>
                   <td className="">
                     <img
@@ -54,19 +63,21 @@ function Cart({ cartProps }) {
                   <td className="">{utils.formatCurrency(product.price)}</td>
                   <td className="product-buttons">
                     <ion-icon
-                      // onClick={() => productQuantity("decrease")}
+                      onClick={() => increaseQuantity(product)}
                       className="decrease"
                       name="arrow-back-circle-outline"
                     ></ion-icon>
                     <span>{product.qty}</span>
                     <ion-icon
-                      // onClick={() => productQuantity("increase")}
+                      onClick={() => decreaseQuantity(product)}
                       className="increase"
                       name="arrow-forward-circle-outline"
                     ></ion-icon>
                   </td>
                   <td className="">
-                    {utils.formatCurrency(product.price * product.qty)}{" "}
+                    <strong>
+                      {utils.formatCurrency(product.price * product.qty)}
+                    </strong>
                   </td>
                 </tr>
               ))}
@@ -74,12 +85,14 @@ function Cart({ cartProps }) {
             <tfoot className="">
               <tr>
                 <td className="" colspan="3">
-                  Cart Total
+                  <strong>Cart Total</strong>
                 </td>
                 <td className="">
-                  {utils.formatCurrency(
-                    productsInCart.reduce((a, c) => a + c.price * c.qty, 0)
-                  )}
+                  <strong>
+                    {utils.formatCurrency(
+                      productsInCart.reduce((a, c) => a + c.price * c.qty, 0)
+                    )}
+                  </strong>
                 </td>
               </tr>
             </tfoot>
@@ -100,4 +113,8 @@ function Cart({ cartProps }) {
 const mapStateToProps = (state) => ({
   cartProps: state.cartState,
 });
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+})(Cart);

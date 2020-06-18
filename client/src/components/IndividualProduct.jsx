@@ -4,6 +4,8 @@ import axios from "axios";
 import Maps from "./Maps";
 import ProductCard from "./ProductCard";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "../assets/Cart.css";
 
 export default function IndividualProduct() {
   const [product, setProduct] = useState({});
@@ -31,12 +33,18 @@ export default function IndividualProduct() {
   return (
     <div>
       <div>This is one product with id {id}</div>
-      <div>{/* <Map /> */}</div>
-      <div>
-        <Row>
-          <ProductCard showDescription={true} product={product} />
-        </Row>
-      </div>
+      <Row>
+        <Col>
+          <Row>
+            <ProductCard showDescription={true} product={product} />
+          </Row>
+        </Col>
+        <Col>
+          <div className="Map">
+            <Maps />
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }

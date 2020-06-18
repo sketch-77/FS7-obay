@@ -2,8 +2,8 @@ import {
   ADD_PRODUCT_CART,
   GET_NUMBERS_CART,
   REMOVE_FROM_CART,
-  // INCREASE_QUANTITY,
-  // DECREASE_QUANTITY,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from "../actions/types";
 
 const initialState = {
@@ -13,10 +13,10 @@ const initialState = {
   products: [],
 };
 export default (state = initialState, action) => {
-  let productSelected = action.payLoad;
+  const productSelected = action.payLoad;
   switch (action.type) {
     case ADD_PRODUCT_CART:
-      const productInCart = state.products.find(
+      let productInCart = state.products.find(
         (e) => e.id === productSelected.id
       );
 
@@ -45,31 +45,65 @@ export default (state = initialState, action) => {
       return {
         ...state,
       };
-    // case REMOVE_FROM_CART:
-    //   return state.filter((products) => product.index !== action.payload.index);
-    // case INCREASE_QUANTITY:
-    //   // state.products['shoes']
-    //   productSelected = [ ...state.products[action.payLoad] ];
-    //   productSelected += 1;
-    //   return {
-    //     ...state,
-    //     cartCost: state.cartCost + state.products[action.payLoad].price,
-    //     products: [
-    //       ...state.products,
-    //       [action.payLoad]: productSelected,
-    //     ]
-    //   };
-    // case DECREASE_QUANTITY:
-    //   productSelected = { ...state.products[action.payLoad] };
-    //   productSelected -= 1;
-    //   return {
-    //     ...state,
-    //     cartCost: state.cartCost - state.products[action.payLoad].price,
-    //     products: {
-    //       ...state.products,
-    //       [action.payLoad]: productSelected,
-    //     },
-    //   };
+    case REMOVE_FROM_CART:
+      const removeItemFromBasket = state.products
+        .slice()
+        .filter((product) => product.id !== product.id);
+      return { ...state, products: removeItemFromBasket };
+
+    case INCREASE_QUANTITY:
+      const itemInCart = state.products.find(
+        (product) => product.id === productSelected.id
+      );
+
+      if (!itemInCart) {
+        // I want to add it with an amount of 1
+        productSelected.qty = 1;
+        return {
+          ...state,
+          cartNumbers: [state.cartNumbers + 1],
+          products: [...state.products, productSelected],
+        };
+      } else {
+        const newProducts = [...state.products].map((product) => {
+          if (product.id == productSelected.id)
+            return { ...product, qty: product.qty + 1 };
+          else return product;
+        });
+
+        return {
+          ...state,
+          cartNumbers: [state.cartNumbers + 1],
+          products: newProducts,
+        };
+      }
+
+    case DECREASE_QUANTITY:
+      let productToDecrease = state.products.find(
+        (product) => product.id === productSelected.id
+      );
+
+      if (!productToDecrease) {
+        // I want to add it with an amount of 1
+        productSelected.qty = 1;
+        return {
+          ...state,
+          cartNumbers: [(state.cartNumbers -= 1)],
+          products: [...state.products, productSelected],
+        };
+      } else {
+        let newProducts = [...state.products].map((product) => {
+          if (product.id == productSelected.id)
+            return { ...product, qty: (product.qty -= 1) };
+          else return product;
+        });
+
+        return {
+          ...state,
+          cartNumbers: [state.cartNumbers + 1],
+          products: newProducts,
+        };
+      }
     default:
       return state;
   }
