@@ -13,7 +13,7 @@ import Card from "react-bootstrap/Card";
 class Home extends Component {
   render() {
     return (
-      <Container>
+      <div>
         <a>
           <Row xs={2} md={4} lg={6}>
             <Col>{/* <h1>Happy Shopping!</h1> */}</Col>
@@ -76,26 +76,7 @@ class Home extends Component {
             alt="AfriKbay-logo"
           />
         </a>
-        <a>
-          <Image
-            src="/footer.svg"
-            height="450"
-            fluid
-            className="d-inline-block align-center"
-            alt="AfriKbay-logo"
-          />
-          {/* <Card>
-            <Card.Header>Header</Card.Header>
-            <Card.Body>
-            <Card.Img
-            src="/footer.svg"
-            height="450"
-            className="d-inline-block align"
-            </Card.Img>
-            </Card.Body>
-          </Card> */}
-        </a>
-      </Container>
+      </div>
     );
   }
 }
