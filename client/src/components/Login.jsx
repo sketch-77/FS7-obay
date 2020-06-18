@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import {NavLink, Route, withRouter} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
@@ -60,8 +60,7 @@ class Login extends Component {
     const { email, password } = this.state;
     return (
       <div>
-        <div className="auth-wrapper">
-          <div className="auth-inner mb-5">
+        <div className="form-wrapper">
             <Card>
               <Card.Body>
                 <h4>Welcome Back!</h4>
@@ -97,9 +96,11 @@ class Login extends Component {
                 >
                   Log in
                 </Button>
+                <span style={{display:"inline-block", textIndent: "3em", float:"right"}}>
+                <NavLink to="/register"> Register</NavLink>
+              </span>
               </Card.Body>
             </Card>
-          </div>
         </div>
       </div>
     );

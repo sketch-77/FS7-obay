@@ -84,8 +84,7 @@ class AddProduct extends Component {
   render() {
     const { title, description, img, price, category } = this.state;
     return (
-      <div className="container">
-        <div className="card card-body">
+        <div className="form-wrapper">
           <Form.Group controlId="formBasicTitle">
             <Form.Label>Product title</Form.Label>
             <Form.Control
@@ -139,7 +138,6 @@ class AddProduct extends Component {
             Add product
           </Button>
         </div>
-      </div>
     );
   }
 }

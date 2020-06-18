@@ -66,8 +66,7 @@ class Register extends Component {
   render() {
     // const { firstName, lastName, email, password } = this.state;
     return (
-      <div className="auth-wrapper">
-        <div className="auth-inner mb-5">
+        <div className="form-wrapper">
           <Card>
             <Card.Body>
               <h4>New User Registration</h4>
@@ -124,13 +123,12 @@ class Register extends Component {
                   "Register"
                 )}
               </Button>
-              <p className="forgot-password text-right">
-                Already registered?
-                <NavLink to="/login">Login</NavLink>
-              </p>
+              <span style={{display:"inline-block", textIndent: "1em", float:"right"}} >
+                 Already registered?
+                <NavLink to="/login">  Login</NavLink>
+              </span>
             </Card.Body>
           </Card>
-        </div>
       </div>
     );
   }

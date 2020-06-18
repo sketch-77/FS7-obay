@@ -1,14 +1,14 @@
-
-/*font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;*/
-
-/* .footer {
-  container: #e09f10;
-  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  display: flex;
-} */
-
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   filter: invert(1);
+}
+
+.form-wrapper {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 30px;
+  border-radius: 15px;
+  transition: all .3s;
 }
