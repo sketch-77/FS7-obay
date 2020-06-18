@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
       };
     case REMOVE_FROM_CART:
       const removeItemFromBasket = state.products.filter(
-        (product) => product.id !== product.id
+        (product) => product.id !== productSelected.id
       );
       return { ...state, products: removeItemFromBasket };
 
