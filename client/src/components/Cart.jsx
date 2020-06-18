@@ -14,7 +14,6 @@ function Cart({
   decreaseQuantity,
 }) {
   let productsInCart = cartProps.products;
-  let removeItemFromBasket = removeFromCart.products;
 
   return (
     <div className="shopping-cart">
@@ -46,9 +45,7 @@ function Cart({
                   <td className="">
                     <ion-icon
                       name="close-circle-outline"
-                      onClick={() =>
-                        removeFromCart(removeItemFromBasket, product)
-                      }
+                      onClick={() => removeFromCart(product)}
                     ></ion-icon>
                   </td>
                   <td className="">
@@ -64,14 +61,14 @@ function Cart({
                   <td className="product-buttons">
                     <ion-icon
                       onClick={() => increaseQuantity(product)}
-                      className="decrease"
-                      name="arrow-back-circle-outline"
+                      className="increase"
+                      name="add-circle"
                     ></ion-icon>
                     <span>{product.qty}</span>
                     <ion-icon
                       onClick={() => decreaseQuantity(product)}
-                      className="increase"
-                      name="arrow-forward-circle-outline"
+                      className="decrease"
+                      name="remove-circle"
                     ></ion-icon>
                   </td>
                   <td className="">
