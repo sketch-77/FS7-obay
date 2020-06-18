@@ -3,9 +3,7 @@ import { Route, withRouter } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+
 import Card from "react-bootstrap/Card";
 
 class Login extends Component {
@@ -61,48 +59,49 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <Container>
-        <Row xs={2} md={4} lg={6}>
-          <Col>
-            {" "}
-            <h1>Login</h1>
-          </Col>
-        </Row>
-
-        <Card>
-          <Card.Body>
-            <h4>Welcome Back!</h4>
-            <hr />
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="Enter email"
-                onChange={this.handleInputChange}
-              />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                placeholder="Password"
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember Me!" />
-            </Form.Group>
-            <Button variant="primary" type="button" onClick={this.handleLogin}>
-              Log in
-            </Button>
-          </Card.Body>
-        </Card>
-      </Container>
+      <div>
+        <div className="auth-wrapper">
+          <div className="auth-inner mb-5">
+            <Card>
+              <Card.Body>
+                <h4>Welcome Back!</h4>
+                <hr />
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    name="email"
+                    type="email"
+                    placeholder="Enter email"
+                    onChange={this.handleInputChange}
+                  />
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    onChange={this.handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" label="Remember Me!" />
+                </Form.Group>
+                <Button
+                  variant="outline-dark"
+                  type="button"
+                  onClick={this.handleLogin}
+                >
+                  Log in
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
+        </div>
+      </div>
     );
   }
 }
