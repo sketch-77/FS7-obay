@@ -28,32 +28,13 @@ const ProductsGrid = (props) => {
 
   return (
     <div>
-      {/* <div
-        id="carouselExampleSlidesOnly"
-        class="carousel slide"
-        data-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            {products.map((product) => (
-              <img
-                src={`/img/${product.img}`}
-                class="d-block w-100"
-                alt="..."
-              />
-            ))}
-          </div>
-        </div>
-      </div> */}
-      <div>
-        <Row>
-          {products.map((product) => (
-            <Row key={product.id}>
-              <ProductCard showDescription={false} product={product} />
-            </Row>
-          ))}
-        </Row>
-      </div>
+      <Row>
+        {products.map((product) => (
+          <Row key={product.id}>
+            <ProductCard showDescription={false} product={product} />
+          </Row>
+        ))}
+      </Row>
     </div>
   );
 };

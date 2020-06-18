@@ -46,9 +46,9 @@ export default (state = initialState, action) => {
         ...state,
       };
     case REMOVE_FROM_CART:
-      const removeItemFromBasket = state.products
-        .slice()
-        .filter((product) => product.id !== product.id);
+      const removeItemFromBasket = state.products.filter(
+        (product) => product.id !== product.id
+      );
       return { ...state, products: removeItemFromBasket };
 
     case INCREASE_QUANTITY:
