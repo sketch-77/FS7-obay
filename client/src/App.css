@@ -1,11 +1,11 @@
 font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 
-.footer {
+/* .footer {
   container: #e09f10;
   box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   display: flex;
-}
+} */
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
