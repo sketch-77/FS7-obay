@@ -19,6 +19,8 @@ const getProduct = async (obj) => {
 };
 
 const getAllProducts = (req, res) => {
+    console.log(`GET ALL PRODUCTS`);
+
     try {
         models.Product.findAll()
             .then((products) => {
@@ -33,9 +35,9 @@ const getAllProducts = (req, res) => {
 
 // Get all products of the user
 router.get("/", userMustBeLoggedIn, (req, res) => {
-    console.log("***** MY USER FROM REQ")
     const {sellerId} = req.user.id;
-    console.log(sellerId)
+    console.log(`DELETING PRODUCT if the user ID: ${req}`);
+    console.log(`GET ALL PRODUCTS OF THE USER WITH ID: ${sellerId}`);
     try {
         req.user.getProducts().then((products) => {
             res.send(products);
@@ -48,38 +50,21 @@ router.get("/", userMustBeLoggedIn, (req, res) => {
 
 // Get all products or Search products by keyword
 router.get("/search", (req, res) => {
-    console.log("***** WE ARE HERE *****");
+    console.log(`SEARCHING PRODUCTS BY KEYWORD OR GETTING ALL PRODUCTS`);
     console.log(req.query);
     const {q} = req.query;
     const Op = Sequelize.Op;
-    const params = q? {
+    const params = q ? {
         where: {
             [Op.or]: [
                 {title: {[Op.like]: `%${q}%`}},
                 {description: {[Op.like]: `%${q}%`}}
             ]
-        } }: {};
-    // console.log("MY REQ.QUERY")
-    // console.log(req.query)
+        }
+    } : {};
     try {
         models.Product.findAll(
             params
-            // {
-            //     where: {
-            //         [Op.or]: [
-            //                 {title: {[Op.like]: `%${q}%`}},
-            //                 {description: {[Op.like]: `%${q}%`}}
-            //             ]
-            //     }
-            // where: {
-            //     [Op.or]: [
-            //         // {name: {[Op.like]: `%${products}%`}},
-            //         // {description: {[Op.like]: `%${products}%`}}
-            //         {name: {[Op.like]: `%flower%`}},
-            //         {description: {[Op.like]: `%flower%`}}
-            //     ]
-            // }
-            // }
         ).then((product) => {
             res.send(product);
         });
@@ -92,12 +77,12 @@ router.get("/search", (req, res) => {
 
 /* CREATE a new product PROTECTED ROUTE */
 router.post("/", userMustBeLoggedIn, function (req, res) {
-    // console.log("I am hereeee", req.body);
+    const {sellerId} = req.user.id;
+    console.log(`CREATE PRODUCT FOR USER WITH ID: ${sellerId}`);
+    console.log(req.user);
+
     const {category, price, description, title} = req.body;
     const {img} = req.files;
-    // console.log("***** MY USER FROM REQ")
-    const {sellerId} = req.user.id;
-    // console.log(sellerId)
 
     let extension = mime.extension(img.mimetype);
     let filename = uuidv4() + "." + extension;
@@ -129,6 +114,7 @@ router.post("/", userMustBeLoggedIn, function (req, res) {
 /* Get Product By Id */
 router.get("/:id", function (req, res, next) {
     const {id} = req.params;
+    console.log(`SEARCHING PRODUCT WITH ID: ${id}`);
 
     models.Product.findOne({
         where: {
@@ -141,15 +127,17 @@ router.get("/:id", function (req, res, next) {
 
 // Delete product that belongs to current user by ID
 router.delete("/:id", userMustBeLoggedIn, (req, res) => {
-    console.log(req.params);
     let {id} = req.params;
+    console.log(`DELETING PRODUCT WITH ID: ${id}`);
     const {sellerId} = req.user.id;
-
+    console.log(`DELETING PRODUCT of the user ID: ${req.user.id}`);
     try {
-        models.Product.destroy({
-            where: {id, sellerId}
-        })
-            .then(getAllProducts(req, res));
+        models.Product.destroy({where:{
+            id
+            }})
+            .then((product) => {
+                res.status(200).send(id);
+            })
     } catch (error) {
         console.log(error);
     }

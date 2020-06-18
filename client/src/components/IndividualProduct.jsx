@@ -29,6 +29,7 @@ export default function IndividualProduct() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     console.log(id);
     getProductById();

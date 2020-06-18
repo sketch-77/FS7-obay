@@ -10,12 +10,14 @@ import {useLocation} from "react-router-dom";
 
 const ProductsGrid = (props) => {
     const [products, setProducts] = useState([]);
+    const [deletedProd, setDeletedProd] = useState([]);
     const { search } = useLocation();
 
     useEffect(() => {
-        console.log("********** my fetch url ********* ");
-        console.log(props.FETCH_URL);
-    }, []);
+        setProducts(products.filter(product => product.id !== deletedProd));
+    }, [deletedProd]);
+
+
 
     let getProducts = () => {
         axios(`${props.FETCH_URL}`, props.fetchParams)
@@ -26,6 +28,23 @@ const ProductsGrid = (props) => {
                 console.log("This is the error ********* ", error);
             });
     };
+
+    let deleteProduct = (id) => {
+        console.log("****** DELETED PRODUCT ID 8888888: ", id)
+            try {
+                axios.delete(`/products/${id}`, {
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                    },
+                }).then((response) => {
+                    setDeletedProd(response.data);
+                    console.log("My data");
+                    console.log(response.data);
+                });
+            } catch (error) {
+                console.log(error);
+            }
+    }
 
     useEffect(() => {
         props.FETCH_URL ? getProducts() : getSearchedItems();
@@ -44,6 +63,7 @@ const ProductsGrid = (props) => {
                 console.log("This is the error ********* ", error);
             });
     }
+
   //
   // useEffect(() => {
   //   getProducts();
@@ -54,7 +74,7 @@ const ProductsGrid = (props) => {
       <Row>
         {products.map((product) => (
           <Row key={product.id}>
-            <ProductCard showDelete={props.showDelete} showDescription={false} product={product} />
+            <ProductCard deleteProduct={deleteProduct} showDelete={props.showDelete} showDescription={false} product={product} />
           </Row>
         ))}
       </Row>
