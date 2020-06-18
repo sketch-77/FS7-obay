@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-// import { connect } from "react-redux";
-// import { addToCart } from "../actions/addAction";
 import axios from "axios";
-import ProductCard from "./ProductCard";
-
 import Row from "react-bootstrap/Row";
 import {useLocation} from "react-router-dom";
+
+import ProductCard from "./ProductCard";
 
 const ProductsGrid = (props) => {
     const [products, setProducts] = useState([]);
@@ -16,8 +14,6 @@ const ProductsGrid = (props) => {
     useEffect(() => {
         setProducts(products.filter(product => product.id !== deletedProd));
     }, [deletedProd]);
-
-
 
     let getProducts = () => {
         axios(`${props.FETCH_URL}`, props.fetchParams)
@@ -63,11 +59,6 @@ const ProductsGrid = (props) => {
                 console.log("This is the error ********* ", error);
             });
     }
-
-  //
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
 
   return (
     <div>
