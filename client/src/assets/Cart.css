@@ -1,12 +1,4 @@
 /* styling the cart page */
-.map {
-  margin-left: 80px auto;
-  background: #ffffff;
-  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-}
 
 .shopping-cart {
   width: 750px;
@@ -114,5 +106,5 @@
   width: 800px;
 }
 .product-buttons {
-  width: 130px;
+  width: 80px;
 }

@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
+import Card from "react-bootstrap/Card";
 
 class Register extends Component {
   constructor(props) {
@@ -61,96 +62,74 @@ class Register extends Component {
       .catch((error) => {
         console.log(error);
       });
-    // adding Button Loading State to the register button
-    // function simulateNetworkRequest() {
-    //   return new Promise((resolve) => setTimeout(resolve, 2000));
-    // }
-    // function LoadingButton() {
-    //   const [isLoading, setLoading] = useState(false);
-    //   useEffect(() => {
-    //     if (isLoading) {
-    //       simulateNetworkRequest().then(() => {
-    //         setLoading(false);
-    //       });
-    //     }
-    //   }, [isLoading]);
-    //   const handleClick = () => setLoading(true);
-    //   return (
-    //     <Button
-    //       variant="primary"
-    //       disabled={isLoading}
-    //       onClick={!isLoading ? handleClick : null}
-    //     >
-    //       {isLoading ? "Loading…" : "Click to Register"}
-    //     </Button>
-    //   );
-    // }
   };
   render() {
     // const { firstName, lastName, email, password } = this.state;
     return (
       <div className="auth-wrapper">
-        <div className="auth-inner">
-          <div>
-            <h3>Sign Up</h3>
-            <div className="form-group">
-              <label>First name</label>
-              <input
-                name="firstName"
-                onChange={this.handleInputChange}
-                type="text"
-                className="form-control"
-                placeholder="First name"
-              />
-            </div>
-            <div className="form-group">
-              <label>Last name</label>
-              <input
-                name="lastName"
-                onChange={this.handleInputChange}
-                type="text"
-                className="form-control"
-                placeholder="Last name"
-              />
-            </div>
-            <div className="form-group">
-              <label>Email address</label>
-              <input
-                name="email"
-                onChange={this.handleInputChange}
-                type="email"
-                className="form-control"
-                placeholder="Enter email"
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                name="password"
-                onChange={this.handleInputChange}
-                type="password"
-                className="form-control"
-                placeholder="Enter password"
-              />
-            </div>
-            <Button
-              onClick={this.handleRegister}
-              type="Register"
-              className="btn btn-primary btn-block"
-            >
-              {this.state.loading ? (
-                <Spinner animation="border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </Spinner>
-              ) : (
-                "Register"
-              )}
-            </Button>
-            <p className="forgot-password text-right">
-              Already registered?
-              <NavLink to="/login">Login</NavLink>
-            </p>
-          </div>
+        <div className="auth-inner mb-5">
+          <Card>
+            <Card.Body>
+              <h4>New User Registration</h4>
+              <hr />
+              <Form.Group controlId="formBasicFirstName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  name="firstName"
+                  type="text"
+                  placeholder="Enter your firstname"
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicLastName">
+                <Form.Label>Surname</Form.Label>
+                <Form.Control
+                  name="lastName"
+                  type="text"
+                  placeholder="Enter your surname"
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Enter email"
+                  onChange={this.handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+              <Button
+                onClick={this.handleRegister}
+                type="Register"
+                className="btn btn-primary"
+              >
+                {this.state.loading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </Spinner>
+                ) : (
+                  "Register"
+                )}
+              </Button>
+              <p className="forgot-password text-right">
+                Already registered?
+                <NavLink to="/login">Login</NavLink>
+              </p>
+            </Card.Body>
+          </Card>
         </div>
       </div>
     );

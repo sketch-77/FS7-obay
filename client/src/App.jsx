@@ -51,6 +51,20 @@ function App() {
               <Route path="/" component={Home} />
             </Switch>
           </Container>
+          <div>
+            <footer class="footer mt-10 py-5 bg-secondary text-white">
+              <div class="container">
+                <span class="text-align-center">
+                  <h6>
+                    © 2020. AfriKbay ·{" "}
+                    <small>
+                      Creataed by Olga Daneko · Chanice Irungu· Nurjannah Omer ·
+                    </small>
+                  </h6>
+                </span>
+              </div>
+            </footer>
+          </div>
         </div>
       </Router>
     </Provider>
