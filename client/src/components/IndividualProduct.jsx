@@ -32,7 +32,6 @@ export default function IndividualProduct() {
 
   return (
     <div>
-      <div>This is one product with id {id}</div>
       <Row>
         <Col>
           <Row>
