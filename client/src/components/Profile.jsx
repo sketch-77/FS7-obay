@@ -84,6 +84,7 @@ class Profile extends React.Component {
                         </Tab>
                         <Tab eventKey="my-products" title="My products">
                             <ProductsGrid FETCH_URL={this.state.FETCH_URL} fetchParams={this.state.fetchParams}
+                                          showDelete={true}
                             ></ProductsGrid>
                         </Tab>
                         <Tab eventKey="add-product" title="Add product">

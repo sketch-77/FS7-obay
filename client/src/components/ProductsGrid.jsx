@@ -54,7 +54,7 @@ const ProductsGrid = (props) => {
       <Row>
         {products.map((product) => (
           <Row key={product.id}>
-            <ProductCard showDescription={false} product={product} />
+            <ProductCard showDelete={props.showDelete} showDescription={false} product={product} />
           </Row>
         ))}
       </Row>

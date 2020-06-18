@@ -39,7 +39,7 @@ function App() {
               <Route path="/protected" component={Protected} />
               <Route path="/product/:id" component={IndividualProduct} />
               <Route path="/products">
-                <ProductsGrid
+                <ProductsGrid showDelete={false}
                   fetchParams={fetchParams}
                 ></ProductsGrid>
               </Route>
