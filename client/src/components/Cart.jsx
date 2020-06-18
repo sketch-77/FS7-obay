@@ -1,4 +1,3 @@
-// import React, { fragment } from "react";
 import { connect } from "react-redux";
 import React, { useState, Fragment } from "react";
 import { removeFromCart } from "../actions/addAction";
@@ -7,7 +6,6 @@ import { decreaseQuantity } from "../actions/addAction";
 import "../assets/Cart.css";
 import utils from "./utils";
 import Table from 'react-bootstrap/Table'
-import Card from "react-bootstrap/Card";
 
 function Cart({
   cartProps,
@@ -19,17 +17,16 @@ function Cart({
 
   return (
     <div className="shopping-cart">
-      <h4>SHOPPING CART</h4>
-      <div className="alert alert-info">
-        {productsInCart.length === 0 ? (
-          "Cart is empty"
-        ) : (
-          <div>
-            You have {productsInCart.length} products in the Cart. <hr />
-          </div>
-        )}
         {productsInCart.length > 0 && <div className="item"></div>}
         <div className="container-products">
+          <div style={{backgroundColor:"white", borderColor: "darkgray", color:"#5d5e5e", fontWeight:"bold" }} className="alert alert-info">
+            {productsInCart.length === 0 ? (
+                "Cart is empty"
+            ) : (
+                <div>
+                  You have {productsInCart.length} products in the Cart.
+                </div>
+            )}
           <Table responsive="sm">
             <thead>
               <tr>
@@ -52,7 +49,7 @@ function Cart({
                   </td>
                   <td >
                     <img
-                        style={{maxWidth:"55px", maxHeight:"55px", "objectFit": "cover"}}  variant="top"
+                        className="img-cart"
                         src={`/img/${product.img}`}
                     />
                   </td>
@@ -83,8 +80,8 @@ function Cart({
             </tbody>
             <tfoot className="">
               <tr>
-                <td className="" colspan="3">
-                  <strong>Cart Total</strong>
+                <td className="" colspan="3" style={{fontWeight:"bold"}}>
+                  CART TOTAL
                 </td>
                 <td className="">
                   <strong>

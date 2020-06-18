@@ -1,26 +1,19 @@
 /* styling the cart page */
 
 .shopping-cart {
-  /*max-width: 750px;*/
-  /*max-height: 423px;*/
-  /*margin: 80px auto;*/
-  background: #E6E7E8;
+
+  background: white;
   box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  /*display: flex;*/
-  /*flex-direction: column;*/
 }
 /* Let’s add some basic style to product name and description.  */
 .container-products {
-  /*max-width: 650px;*/
-  /*max-height:;: 450px;*/
   justify-content: space-around;
   margin: 0 auto;
-  /*margin-top: 50px;*/
 }
 .container-products ion-icon {
   font-size: 25px;
-  color: #E6E7E8;
+  color: #5d5e5e;
   margin-left: 10px;
   margin-right: 10px;
   cursor: pointer;
@@ -70,13 +63,14 @@
   display: flex;
   flex-wrap: wrap;
 }
-.products img {
+.products {
   width: 500px;
 }
 
-.img-cart{
-  max-height: 25px;
-  max-width: 25px;
+.img-cart {
+  max-height: 10vw;
+  max-width: 10vw;
+  object-fit: cover;
 }
 .cartTotalContainer {
   display: flex;
@@ -90,27 +84,4 @@
 .cartTotal {
   width: 10%;
   font-size: 20px;
-}
-@media (max-width: 500px) {
-  nav h2 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  .sm-hide {
-    display: none;
-  }
-  .products,
-  .product-header {
-    justify-content: center;
-  }
-  .cartTotalContainer {
-    padding-right: 8%;
-  }
-}
-.img-product {
-  width: 800px;
-}
-.product-buttons {
-  width: 80px;
 }
