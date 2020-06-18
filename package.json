@@ -7,6 +7,7 @@
     "migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.1.5",
     "await-to-js": "^2.1.1",
     "bcrypt": "^4.0.1",
     "bcrypt-nodejs": "0.0.3",

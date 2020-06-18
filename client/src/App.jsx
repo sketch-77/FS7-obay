@@ -14,10 +14,11 @@ import Protected from "./components/Protected";
 import Profile from "./components/Profile";
 import IndividualProduct from "./components/IndividualProduct";
 import Home from "./components/Home";
+import Search from "./components/Search";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
+      JSON.parse(localStorage.getItem("user"))
   );
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [userProducts, setUserProducts] = useState([]);
@@ -39,7 +40,6 @@ function App() {
               <Route path="/product/:id" component={IndividualProduct} />
               <Route path="/products">
                 <ProductsGrid
-                  FETCH_URL={FETCH_URL}
                   fetchParams={fetchParams}
                 ></ProductsGrid>
               </Route>
