@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import "../App.css";
 import { withRouter } from "react-router-dom";
-// import { NavLink } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-// import Card from "react-bootstrap/Card";
-// import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
@@ -53,13 +50,11 @@ class Home extends Component {
               </Carousel.Item>
             </Carousel>
           </div>
-
         <div className="comments">
           <Card>
             <Card.Body>Our community feedback!</Card.Body>
           </Card>
         </div>
-
         <Row className="justify-content-md-center">
           <Col>
             <Image
@@ -71,7 +66,6 @@ class Home extends Component {
             />
           </Col>
         </Row>
-
         <Row className="justify-content-md-center">
           <Col>
             <Image
