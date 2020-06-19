@@ -80,7 +80,6 @@ router.get("/", getAllUsers);
 
 /* CREATE a new user */
 router.post("/register", function (req, res) {
-    console.log("Iam hereeee", req.body);
     const {firstName, lastName, email, password} = req.body;
     models.User.create({firstName, lastName, email, password})
         .then((user) => {

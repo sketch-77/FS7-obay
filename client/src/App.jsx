@@ -35,7 +35,7 @@ function App() {
         <div className="App" style={{maxHeight:"100%"}}>
           <NavBar currentUser={currentUser}></NavBar>
           <div>
-          <Container className="mt-3">
+          <Container className="mt-4 mb-4">
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/protected" component={Protected} />
