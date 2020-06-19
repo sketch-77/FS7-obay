@@ -20,7 +20,7 @@ class Home extends Component {
           <Col>
             <Image
               src="/Asset6.png"
-              height="1200"
+              height="740"
               className="d-inline-block align-center"
               alt="AfriKbay-logo"
             />
