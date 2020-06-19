@@ -48,7 +48,7 @@ This will run scripts from the **migrations** folder and create database tables.
 Go to the MySQL CLI (if open) or type `mysql -u root -p` to access the MySQL CLI using your password.
 
 In the MySQL CLI run `show databases;` and ensure 'foodder' database was created.
-Then run `use foodder;` and then `show tables;` to ensure all 'user', 'meal', 'order' tables were created;
+Then run `use obay;` and then `show tables;` to ensure all 'user', 'meal', 'order' tables were created;
 
 If you make any changes in the models to apply them you will need to create a new migration files by running the following command in the root of the folder:
 `node ./node_modules/sequelize-auto-migrations/bin/makemigration`.
@@ -63,6 +63,20 @@ Then to apply these changes you will need to run the following command:
 - Client is configured so all API calls will be proxied to port 5000 for a smoother development experience.
 - You can test your client app in `http://localhost:3000`
 - You can test your API in `http://localhost:5000/`
+
+
+## Routes
+| ROUTE            | HTTP Method | Description                                                       |   |
+|------------------|-------------|-------------------------------------------------------------------|---|
+| /users/login     | POST        | Log in                                                            |   |
+| /users/register  | POST        | Add new user                                                      |   |
+| /users/:id       | GET         | Get user by id                                                    |   |
+| /users/profile   | GET         | Get profile PROTECTED                                             |   |
+| /products        | GET         | Get all products or Get all products of the user                  |   |
+| /products        | POST        | CREATE a new product PROTECTED ROUTE                              |   |
+| /products/:id    | GET         | Get Product By Id                                                 |   |
+| /products/:id    | DELETE      | Delete product that belongs to current user by ID PROTECTED ROUTE |   |
+| /products/search | GET         | Get all products or Search products by keyword                    |   |
 
 ## Resources
 
