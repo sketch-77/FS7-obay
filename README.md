@@ -64,6 +64,9 @@ Then to apply these changes you will need to run the following command:
 - You can test your client app in `http://localhost:3000`
 - You can test your API in `http://localhost:5000/`
 
+## DB schema
+[Schema](https://app.dbdesigner.net/designer/schema/0-obay)
+![DB Schema](/Volumes/oj/CodeOp/weeks911/FS7-obay/public/images/DBSchema.png)
 
 ## Routes
 | ROUTE            | HTTP Method | Description                                                       |   |
