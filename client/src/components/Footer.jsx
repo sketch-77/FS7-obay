@@ -4,13 +4,13 @@ function Footer() {
 
 
     return (
-        <footer class="footer mt-10 py-5 bg-secondary text-white position: absolute bottom: 0">
-            <div class="container">
-        <span class="text-align-center">
+        <footer className="footer mt-10 py-5 bg-secondary text-white position: absolute bottom: 0">
+            <div className="container">
+        <span className="text-align-center">
         <h6>
                     © 2020. AfriKbay ·{" "}
             <small>
-    Creataed by Olga Daneko · Chanice Irungu· Nurjannah Omer ·
+    Creataed by Olga Dayneko · Chanice Irungu· Nurjannah Omer ·
 </small>
     </h6>
     </span>

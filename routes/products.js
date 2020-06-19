@@ -57,8 +57,8 @@ router.get("/search", (req, res) => {
     const params = q ? {
         where: {
             [Op.or]: [
-                {title: {[Op.like]: `%${q}%`}},
-                {description: {[Op.like]: `%${q}%`}}
+                {title: {[Op.like]: `%${q.toLowerCase()}%`}},
+                {description: {[Op.like]: `%${q.toLowerCase()}%`}}
             ]
         }
     } : {};
