@@ -17,9 +17,9 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   const [currentUser, setCurrentUser] = useState(
-      JSON.parse(localStorage.getItem("user"))
+    JSON.parse(localStorage.getItem("user"))
   );
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [userProducts, setUserProducts] = useState([]);
@@ -32,16 +32,16 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App" style={{maxHeight:"100%"}}>
+        <div className="App">
           <NavBar currentUser={currentUser}></NavBar>
-          <div>
-          <Container className="mt-4 mb-4">
+          <Container className="my-4 main-content">
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/protected" component={Protected} />
               <Route path="/product/:id" component={IndividualProduct} />
               <Route path="/products">
-                <ProductsGrid showDelete={false}
+                <ProductsGrid
+                  showDelete={false}
                   fetchParams={fetchParams}
                 ></ProductsGrid>
               </Route>
@@ -53,12 +53,11 @@ function App() {
               <Route path="/" component={Home} />
             </Switch>
           </Container>
-          </div>
-            <Footer></Footer>
+          <Footer></Footer>
         </div>
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;

@@ -7,13 +7,10 @@ import Maps from "./Maps";
 import ProductCard from "./ProductCard";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
 
 export default function IndividualProduct() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
-
 
   let getProductById = () => {
     try {
@@ -39,11 +36,13 @@ export default function IndividualProduct() {
     <div className="auth-wrapper">
       <Row>
         <Col>
-
           <Row>
-            <ProductCard showDelete={true} showDescription={true} product={product} />
+            <ProductCard
+              showDelete={true}
+              showDescription={true}
+              product={product}
+            />
           </Row>
-
         </Col>
         <Col>
           <Maps />

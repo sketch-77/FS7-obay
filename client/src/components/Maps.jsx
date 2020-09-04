@@ -13,7 +13,7 @@ export default function Maps() {
         <iframe
           style={{ width: "400px", height: "400px" }}
           src="https://maps.google.com/maps?q=Nairobi%20Haileselasie&t=k&z=13&ie=UTF8&iwloc=&output=embed"
-          sytle={{
+          style={{
             frameborder: "0",
             scrolling: "yes",
             marginheight: "0",
