@@ -1,6 +1,8 @@
-# Obay
+# AfriKbay
 
-In this repository, you will use build a full stack Fodder app using React, Node/Express, and MySQL with Sequelize.
+AfriKbay (oBay) is an e-commerce online market place that aims to showcase young product design talent from Africa. Originally named Obay - a cross between amazon and etsy - this site provides the rising talents in Africa.
+One of the main criteria to qualify - the future seller is African born and producing their product in Africa. A platform to empower and harness new talent. The selection process will be strict and each designer will need to pass a number of tests that ensure their full and ongoing participation.
+The app allows you to search and filter a wide range of designers and products in a couple of clicks. For now, it offers an simplified add/delete to basket and checkout. Selected users will be able to login/logout of their account, update personal as well as product info (images, text, price). To become a seller, certain criteria will need to be followed. Future autocomplete searches, fill in forms, linking and streamlining payment options, addition of a free courier system and much more.  
 
 ## Objectives
 
